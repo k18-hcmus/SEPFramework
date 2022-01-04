@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SEPFramework
+namespace SEPFramework.source.views.template_forms
 {
-    public partial class Form1 : Form
+    public partial class BaseForm : Form
     {
-        public Form1()
+        public BaseForm()
         {
             InitializeComponent();
         }
