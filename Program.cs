@@ -1,4 +1,5 @@
 ﻿using SEPFramework.source.views.framework_ui;
+using SEPFramework.source.views.template_forms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace SEPFramework
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SignIn());
+            Application.Run(new BaseForm());
         }
     }
 }
