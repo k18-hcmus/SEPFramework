@@ -54,17 +54,17 @@
             this.pnlButton.Controls.Add(this.btnDelete);
             this.pnlButton.Controls.Add(this.btnEdit);
             this.pnlButton.Controls.Add(this.btnAdd);
-            this.pnlButton.Location = new System.Drawing.Point(120, 382);
+            this.pnlButton.Location = new System.Drawing.Point(13, 382);
             this.pnlButton.Name = "pnlButton";
-            this.pnlButton.Size = new System.Drawing.Size(590, 56);
+            this.pnlButton.Size = new System.Drawing.Size(367, 40);
             this.pnlButton.TabIndex = 1;
             // 
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
-            this.btnDelete.Location = new System.Drawing.Point(479, 3);
+            this.btnDelete.Location = new System.Drawing.Point(177, 3);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(108, 50);
+            this.btnDelete.Size = new System.Drawing.Size(89, 31);
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -73,9 +73,9 @@
             // btnEdit
             // 
             this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
-            this.btnEdit.Location = new System.Drawing.Point(237, 3);
+            this.btnEdit.Location = new System.Drawing.Point(90, 3);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(108, 50);
+            this.btnEdit.Size = new System.Drawing.Size(81, 31);
             this.btnEdit.TabIndex = 1;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -86,7 +86,7 @@
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.btnAdd.Location = new System.Drawing.Point(3, 3);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(108, 50);
+            this.btnAdd.Size = new System.Drawing.Size(81, 31);
             this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;

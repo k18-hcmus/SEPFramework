@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SEPFramework.source.Engines;
+using SEPFramework.source.EntityMeta;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,6 +31,17 @@ namespace SEPFramework.source.views.template_forms
             data.Rows.Add("Quan", "18120521", "kmq@gmail.com");
             data.Rows.Add("Nguyen", "18120488", "tpn@gmail.com");
             dgvData.DataSource = data;
+            DataProvider dataProvider = DataProvider.Instance;
+            dataProvider.ConnString = "Data Source=\"localhost, 1433\";" +
+                "Initial Catalog=StudentManagement;User ID=sa;" +
+                "Password=DesignPattern@2022;Connect Timeout=30;" +
+                "Encrypt=False;TrustServerCertificate=False" +
+                ";ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            List<EntityMetaData> tables = dataProvider.getTables();
+            foreach (EntityMetaData t in tables)
+            {
+                EntityTemplateEngine.Instance.generateEntityFile(t);
+            }
         }
 
         private void Add_Click(object sender, EventArgs e)
