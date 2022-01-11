@@ -15,6 +15,21 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -25,6 +40,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -60,10 +76,35 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="source\Engines\DataProvider.cs" />
+    <Compile Include="source\Engines\EntityTemplateEngine.cs" />
+    <Compile Include="source\Engines\SQLDataTypeMapping.cs" />
+    <Compile Include="source\EntityMeta\ColumnMetaData.cs" />
+    <Compile Include="source\EntityMeta\EntityMetaData.cs" />
+    <Compile Include="source\EntityMeta\ForeignKey.cs" />
+    <Compile Include="source\EntityMeta\PrimaryKey.cs" />
     <Compile Include="source\utils\FileUtils.cs" />
     <Compile Include="source\utils\renderers\FileTemplate.cs" />
     <Compile Include="source\utils\renderers\FormTemplate.cs" />
     <Compile Include="source\utils\renderers\TemplateFactory.cs" />
+    <Compile Include="source\views\framework-ui\GeneratingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="source\views\framework-ui\GeneratingForm.Designer.cs">
+      <DependentUpon>GeneratingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="source\views\framework-ui\Home.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="source\views\framework-ui\Home.Designer.cs">
+      <DependentUpon>Home.cs</DependentUpon>
+    </Compile>
+    <Compile Include="source\views\framework-ui\Register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="source\views\framework-ui\Register.Designer.cs">
+      <DependentUpon>Register.cs</DependentUpon>
+    </Compile>
     <Compile Include="source\views\framework-ui\SignIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +144,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="source\views\framework-ui\Home.resx">
+      <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="source\views\framework-ui\SignIn.resx">
       <DependentUpon>SignIn.cs</DependentUpon>
     </EmbeddedResource>
@@ -116,6 +160,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="source\ORMEntities\.gitkeep" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -123,6 +168,21 @@
   <ItemGroup>
     <Folder Include="source\controllers\" />
     <Folder Include="source\models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="source\Template\EntityTemplate.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
