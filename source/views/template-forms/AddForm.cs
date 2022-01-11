@@ -12,7 +12,7 @@ namespace SEPFramework.source.views.template_forms
 {
     public partial class AddForm : ActionForm
     {
-        public AddForm(BaseForm baseForm, DataTable data, Modification modification, int index = -1): base(baseForm, data, modification, index)
+        public AddForm(BaseForm baseForm, Modification modification, int index = -1): base(baseForm, modification, index)
         {
             InitializeComponent();
             this.Size = new Size(550, 420);

@@ -46,7 +46,7 @@ namespace SEPFramework.source.views.template_forms
 
         private void Add_Click(object sender, EventArgs e)
         {
-            ActionForm af = new AddForm(this, data, ActionForm.Modification.Editable);
+            ActionForm af = new AddForm(this, ActionForm.Modification.Editable);
             af.Show();
         }
 
@@ -55,7 +55,7 @@ namespace SEPFramework.source.views.template_forms
             if (dgvData.SelectedRows.Count == 0)
                 return;
             DataGridViewRow selectedRow = dgvData.SelectedRows[0] as DataGridViewRow;
-            ActionForm ef = new EditForm(this, data, ActionForm.Modification.Editable, selectedRow.Index);
+            ActionForm ef = new EditForm(this, ActionForm.Modification.Editable, selectedRow.Index);
             ef.Show();
         }
 
@@ -71,9 +71,6 @@ namespace SEPFramework.source.views.template_forms
             if (dialogResult == DialogResult.Yes)
             {
                 data.Rows.Remove(data.Rows[selectedRow.Index]);
-            }
-            else if (dialogResult == DialogResult.No)
-            {
             }
         }
     }

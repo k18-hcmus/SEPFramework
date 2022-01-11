@@ -1,4 +1,5 @@
 ﻿using Scriban;
+using SEPFramework.source.utils.renderers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,18 +20,19 @@ namespace SEPFramework.source.views.framework_ui
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnGenerate_Click(object sender, EventArgs e)
         {
             //Sample Generate Code
-            DirectoryInfo di = Directory.CreateDirectory("source");
-            string text = System.IO.File.ReadAllText("..\\..\\source\\views\\template-forms\\BaseForm.txt");
-            Template baseFormTemplate = Template.Parse(text);
-            string result = baseFormTemplate.Render(new { name = "Nhan" });
-            File.WriteAllText(".\\source\\ClonedBaseForm.cs", result);
-            string text2 = System.IO.File.ReadAllText("..\\..\\source\\views\\template-forms\\BaseForm.Designer.cs.txt");
-            Template baseFormTemplate2 = Template.Parse(text2);
-            string result2 = baseFormTemplate2.Render();
-            File.WriteAllText(".\\source\\ClonedBaseForm.Designer.cs", result2);
+            DirectoryInfo di = Directory.CreateDirectory("sample");
+            string namespaceString = "SEPFramework.sample";
+            TemplateFactory.getTemplate(TemplateFactory.FormType.BaseForm, namespaceString)
+                .Render(".\\sample", "BaseForm");
+            TemplateFactory.getTemplate(TemplateFactory.FormType.ActionForm, namespaceString)
+                .Render(".\\sample", "ActionForm");
+            TemplateFactory.getTemplate(TemplateFactory.FormType.AddForm, namespaceString)
+                .Render(".\\sample", "AddForm");
+            TemplateFactory.getTemplate(TemplateFactory.FormType.EditForm, namespaceString)
+                .Render(".\\sample", "EditForm");
         }
     }
 }

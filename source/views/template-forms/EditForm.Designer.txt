@@ -1,6 +1,6 @@
-namespace SEPFramework.source.views.template_forms
+namespace {{ namespacestring }}
 {
-    partial class BaseForm
+    partial class EditForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@ namespace SEPFramework.source.views.template_forms
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "BaseForm";
+            this.Text = "EditForm";
         }
 
         #endregion
