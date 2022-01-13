@@ -1,10 +1,15 @@
 ﻿using SEPFramework.source.Engines;
 using SEPFramework.source.EntityMeta;
+using SEPFramework.source.Utils.Renderers;
+using SEPFramework.source.Utils.Renderers.Factories;
+using SEPFramework.source.Utils.Renderers.Parameters;
+using SEPFramework.source.Views.template_forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,21 +20,15 @@ namespace SEPFramework.source.views.template_forms
     public partial class BaseForm : Form
     {
         public DataTable data = new DataTable();
-        public BaseForm()
+        public BaseForm(List<object> data, Type type)
         {
             InitializeComponent();
-            InitMockData();
+            InitData(data, type);
         }
 
-        private void InitMockData()
+        private void InitData(List<object> list_data, Type type)
         {
-            data.Columns.Add("Name");
-            data.Columns.Add("MSSV");
-            data.Columns.Add("Email");
-            data.Rows.Add("Nhan", "18120495", "ttn@gmail.com");
-            data.Rows.Add("Long", "18120449", "nhl@gmail.com");
-            data.Rows.Add("Quan", "18120521", "kmq@gmail.com");
-            data.Rows.Add("Nguyen", "18120488", "tpn@gmail.com");
+            data = ToDataTable<Student>((List<Student>)(object)list_data);
             dgvData.DataSource = data;
             DataProvider dataProvider = DataProvider.Instance;
             dataProvider.ConnString = "Data Source=\"localhost, 1433\";" +
@@ -38,9 +37,14 @@ namespace SEPFramework.source.views.template_forms
                 "Encrypt=False;TrustServerCertificate=False" +
                 ";ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             List<EntityMetaData> tables = dataProvider.getTables();
+            ITemplateFactory entityFactory = new EntityFactory();
+            string namespaceString = "SEP.SampleSource";
+            DirectoryInfo di = Directory.CreateDirectory("SampleSource");
+            string path = ".\\SampleSource";
             foreach (EntityMetaData t in tables)
             {
-                EntityTemplateEngine.Instance.generateEntityFile(t);
+                ITemplate entityTemplate = entityFactory.GetTemplate(new EntityParameter(t, namespaceString));
+                entityTemplate.Render(path, t.name);
             }
         }
 

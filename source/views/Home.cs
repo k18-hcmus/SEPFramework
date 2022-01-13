@@ -86,5 +86,9 @@ namespace SEPFramework.source.views
             this.isLoggedIn = isLoggedIn;
             LoadButton();
         }
+
+        private void generateButton()
+        {
+        }
     }
 }

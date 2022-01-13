@@ -12,7 +12,7 @@ namespace SEPFramework.source.Engines
     {
         // Singleton to create only one 
         private static EntityTemplateEngine instance = null;
-        private static int templateCount;
+        private static int templateCount = 0;
         public static EntityTemplateEngine Instance
         {
             get { 
@@ -21,7 +21,7 @@ namespace SEPFramework.source.Engines
             }
         }
 
-        string entityTemplateFile = @"..\..\source\template\EntityTemplate.txt";
+        string entityTemplateFile = @"..\..\source\Templates\EntityTemplate.txt";
 
         public void generateEntityFile(EntityMetaData entity)
         {

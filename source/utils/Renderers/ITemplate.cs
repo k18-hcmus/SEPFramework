@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SEPFramework.source.utils.renderers
+namespace SEPFramework.source.Utils.Renderers
 {
     public interface ITemplate
     {
