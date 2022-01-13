@@ -1,6 +1,6 @@
-﻿namespace SEPFramework.source.views.framework_ui
+﻿namespace SEPFramework.source.views
 {
-    partial class Home
+    partial class GeneratingForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,30 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pnContainer = new System.Windows.Forms.Panel();
-            this.SuspendLayout();
-            // 
-            // pnContainer
-            // 
-            this.pnContainer.Location = new System.Drawing.Point(111, 52);
-            this.pnContainer.Name = "pnContainer";
-            this.pnContainer.Size = new System.Drawing.Size(159, 152);
-            this.pnContainer.TabIndex = 2;
-            // 
-            // Home
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(411, 255);
-            this.Controls.Add(this.pnContainer);
-            this.Name = "Home";
-            this.Text = "Home";
-            this.ResumeLayout(false);
-
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Text = "GeneratingForm";
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel pnContainer;
     }
 }

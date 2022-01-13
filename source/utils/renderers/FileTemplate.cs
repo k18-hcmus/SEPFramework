@@ -7,13 +7,8 @@ using System.Threading.Tasks;
 
 namespace SEPFramework.source.utils.renderers
 {
-    public abstract class FileTemplate
+    public interface ITemplate
     {
-        protected Template template;
-        public FileTemplate(Template template)
-        {
-            this.template = template;
-        }
-        public abstract void Render(string path, string filename);
+        void Render(string path, string filename);
     }
 }

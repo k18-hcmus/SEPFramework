@@ -1,4 +1,4 @@
-﻿namespace SEPFramework.source.views.framework_ui
+﻿namespace SEPFramework.source.views
 {
     partial class SignIn
     {

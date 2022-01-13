@@ -7,18 +7,20 @@ using System.Threading.Tasks;
 
 namespace SEPFramework.source.utils.renderers
 {
-    public class FormTemplate : FileTemplate
+    public class FormTemplate : ITemplate
     {
+        private Template form;
         private Template designer;
         private string namespaceString;
-        public FormTemplate(Template form, Template designer, string namespaceString) : base(form)
+        public FormTemplate(Template form, Template designer, string namespaceString)
         {
+            this.form = form;
             this.designer = designer;
             this.namespaceString = namespaceString;
         }
-        public override void Render(string path, string filename)
+        public void Render(string path, string filename)
         {
-            string formData = this.template.Render(new { namespacestring = this.namespaceString });
+            string formData = form.Render(new { namespacestring = namespaceString });
             FileUtils.GetInstance().CreateFile(path + "\\" + filename + ".cs", formData);
             string designerData = this.designer.Render(new { namespacestring = this.namespaceString });
             FileUtils.GetInstance().CreateFile(path + "\\" + filename + ".Designer.cs", designerData);

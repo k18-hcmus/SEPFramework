@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ##namespace
+namespace {{ namespacestring }}
 {
-    public class ##entityName
+    public class {{ name }}
     {
-    ##entityColumns
+    {{ columns }}
     }
 }

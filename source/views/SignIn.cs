@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SEPFramework.source.views.framework_ui
+namespace SEPFramework.source.views
 {
     public partial class SignIn : Form
     {

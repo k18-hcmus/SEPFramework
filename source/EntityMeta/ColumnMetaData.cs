@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SEPFramework.source.EntityMeta
 {
-    internal class ColumnMetaData
+    public class ColumnMetaData
     {
         public string name { get; set; }
         public string type { get; set; }
