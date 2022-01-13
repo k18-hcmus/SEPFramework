@@ -1,10 +1,14 @@
 ﻿using SEPFramework.source.Engines;
 using SEPFramework.source.EntityMeta;
+using SEPFramework.source.Utils.Renderers;
+using SEPFramework.source.Utils.Renderers.Factories;
+using SEPFramework.source.Utils.Renderers.Parameters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,9 +42,14 @@ namespace SEPFramework.source.views.template_forms
                 "Encrypt=False;TrustServerCertificate=False" +
                 ";ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             List<EntityMetaData> tables = dataProvider.getTables();
+            ITemplateFactory entityFactory = new EntityFactory();
+            string namespaceString = "SEP.SampleSource";
+            DirectoryInfo di = Directory.CreateDirectory("SampleSource");
+            string path = ".\\SampleSource";
             foreach (EntityMetaData t in tables)
             {
-                EntityTemplateEngine.Instance.generateEntityFile(t);
+                ITemplate entityTemplate = entityFactory.GetTemplate(new EntityParameter(t, namespaceString));
+                entityTemplate.Render(path, t.name);
             }
         }
 

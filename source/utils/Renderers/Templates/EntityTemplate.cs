@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SEPFramework.source.utils.renderers
+namespace SEPFramework.source.Utils.Renderers.Templates
 {
     public class EntityTemplate : ITemplate
     {
@@ -24,7 +24,7 @@ namespace SEPFramework.source.utils.renderers
         }
         public void Render(string path, string filename)
         {
-            string entityData = field.Render(new { namespacestring = this.namespaceString, name = data.mappingTableName, columns = generateEntityColumns(data.columns) });
+            string entityData = entity.Render(new { namespacestring = this.namespaceString, name = data.mappingTableName, columns = generateEntityColumns(data.columns) });
             FileUtils.GetInstance().CreateFile(path + "\\" + filename + ".cs", entityData);
         }
         private string generateEntityColumns(Dictionary<string, ColumnMetaData> columns)

@@ -74,6 +74,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="source\Engines\DataProvider.cs" />
@@ -84,10 +89,15 @@
     <Compile Include="source\EntityMeta\ForeignKey.cs" />
     <Compile Include="source\EntityMeta\PrimaryKey.cs" />
     <Compile Include="source\Utils\FileUtils.cs" />
-    <Compile Include="source\Utils\renderers\EntityTemplate.cs" />
-    <Compile Include="source\Utils\renderers\FileTemplate.cs" />
-    <Compile Include="source\Utils\renderers\FormTemplate.cs" />
-    <Compile Include="source\Utils\renderers\TemplateFactory.cs" />
+    <Compile Include="source\Utils\Renderers\BaseParameter.cs" />
+    <Compile Include="source\Utils\Renderers\Factories\EntityFactory.cs" />
+    <Compile Include="source\Utils\Renderers\Parameters\EntityParameter.cs" />
+    <Compile Include="source\Utils\Renderers\Parameters\FormParameter.cs" />
+    <Compile Include="source\Utils\Renderers\Templates\EntityTemplate.cs" />
+    <Compile Include="source\Utils\Renderers\Factories\FormFactory.cs" />
+    <Compile Include="source\Utils\Renderers\ITemplate.cs" />
+    <Compile Include="source\Utils\Renderers\Templates\FormTemplate.cs" />
+    <Compile Include="source\Utils\Renderers\ITemplateFactory.cs" />
     <Compile Include="source\Views\GeneratingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +161,17 @@
     <EmbeddedResource Include="source\Views\SignIn.resx">
       <DependentUpon>SignIn.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
