@@ -1,4 +1,4 @@
-﻿using SEPFramework.source.views.framework_ui;
+﻿using SEPFramework.source.views;
 using SEPFramework.source.views.template_forms;
 using System;
 using System.Collections.Generic;

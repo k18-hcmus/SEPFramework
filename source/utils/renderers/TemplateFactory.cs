@@ -1,4 +1,5 @@
 ﻿using Scriban;
+using SEPFramework.source.EntityMeta;
 using SEPFramework.source.views.template_forms;
 using System;
 using System.Collections.Generic;
@@ -12,51 +13,59 @@ namespace SEPFramework.source.utils.renderers
 {
     public class TemplateFactory
     {
-        public enum FormType
+        public enum Type
         {
             BaseForm,
             ActionForm,
             AddForm,
-            EditForm
+            EditForm,
+            Entity
         }
         private void initTemplate()
         {
-            //formTemplateDict.Add(FormType.BaseForm, System.IO.File.ReadAllText("..\\..\\source\\views\\template-forms\\BaseForm.txt"));
-            //formTemplateDict.Add(FormType.Action, System.IO.File.ReadAllText("..\\..\\source\\views\\template-forms\\Action.txt"));
-            //formTemplateDict.Add(FormType.AddForm, System.IO.File.ReadAllText("..\\..\\source\\views\\template-forms\\AddForm.txt"));
-            //formTemplateDict.Add(FormType.EditForm, System.IO.File.ReadAllText("..\\..\\source\\views\\template-forms\\EditForm.txt"));
-            //formDesignerDict.Add(FormType.BaseForm, System.IO.File.ReadAllText("..\\..\\source\\views\\template-forms\\BaseForm.Designer.txt"));
-            //formDesignerDict.Add(FormType.Action, System.IO.File.ReadAllText("..\\..\\source\\views\\template-forms\\Action.Designer.txt"));
-            //formDesignerDict.Add(FormType.AddForm, System.IO.File.ReadAllText("..\\..\\source\\views\\template-forms\\AddForm.Designer.txt"));
-            //formDesignerDict.Add(FormType.EditForm, System.IO.File.ReadAllText("..\\..\\source\\views\\template-forms\\EditForm.Designer.txt"));
+            //formTemplateDict.Add(Type.BaseForm, System.IO.File.ReadAllText("..\\..\\source\\Templates\\BaseForm.txt"));
+            //formTemplateDict.Add(Type.Action, System.IO.File.ReadAllText("..\\..\\source\\Templates\\Action.txt"));
+            //formTemplateDict.Add(Type.AddForm, System.IO.File.ReadAllText("..\\..\\source\\Templates\\AddForm.txt"));
+            //formTemplateDict.Add(Type.EditForm, System.IO.File.ReadAllText("..\\..\\source\\Templates\\EditForm.txt"));
+            //formDesignerDict.Add(Type.BaseForm, System.IO.File.ReadAllText("..\\..\\source\\Templates\\BaseForm.Designer.txt"));
+            //formDesignerDict.Add(Type.Action, System.IO.File.ReadAllText("..\\..\\source\\Templates\\Action.Designer.txt"));
+            //formDesignerDict.Add(Type.AddForm, System.IO.File.ReadAllText("..\\..\\source\\Templates\\AddForm.Designer.txt"));
+            //formDesignerDict.Add(Type.EditForm, System.IO.File.ReadAllText("..\\..\\source\\Templates\\EditForm.Designer.txt"));
         }
-        public static FileTemplate getTemplate(FormType type, string namespaceString)
+        public static ITemplate getTemplate(Type type, string namespaceString, EntityMetaData data = null)
         {
-            FileTemplate fileTemplate = null;
+            ITemplate fileTemplate = null;
             switch (type)
             {
-                case FormType.BaseForm:
+                case Type.BaseForm:
                     fileTemplate = new FormTemplate(
-                        Template.Parse(System.IO.File.ReadAllText("..\\..\\source\\views\\template-forms\\BaseForm.txt")),
-                        Template.Parse(System.IO.File.ReadAllText("..\\..\\source\\views\\template-forms\\BaseForm.Designer.txt")),
+                        Template.Parse(System.IO.File.ReadAllText("..\\..\\source\\Templates\\BaseForm.txt")),
+                        Template.Parse(System.IO.File.ReadAllText("..\\..\\source\\Templates\\BaseForm.Designer.txt")),
                         namespaceString);
                     break;
-                case FormType.ActionForm:
+                case Type.ActionForm:
                     fileTemplate = new FormTemplate(
-                        Template.Parse(System.IO.File.ReadAllText("..\\..\\source\\views\\template-forms\\ActionForm.txt")),
-                        Template.Parse(System.IO.File.ReadAllText("..\\..\\source\\views\\template-forms\\ActionForm.Designer.txt")),
+                        Template.Parse(System.IO.File.ReadAllText("..\\..\\source\\Templates\\ActionForm.txt")),
+                        Template.Parse(System.IO.File.ReadAllText("..\\..\\source\\Templates\\ActionForm.Designer.txt")),
                         namespaceString);
                     break;
-                case FormType.AddForm:
+                case Type.AddForm:
                     fileTemplate = new FormTemplate(
-                        Template.Parse(System.IO.File.ReadAllText("..\\..\\source\\views\\template-forms\\AddForm.txt")),
-                        Template.Parse(System.IO.File.ReadAllText("..\\..\\source\\views\\template-forms\\AddForm.Designer.txt")),
+                        Template.Parse(System.IO.File.ReadAllText("..\\..\\source\\Templates\\AddForm.txt")),
+                        Template.Parse(System.IO.File.ReadAllText("..\\..\\source\\Templates\\AddForm.Designer.txt")),
                         namespaceString);
                     break;
-                case FormType.EditForm:
+                case Type.EditForm:
                     fileTemplate = new FormTemplate(
-                        Template.Parse(System.IO.File.ReadAllText("..\\..\\source\\views\\template-forms\\EditForm.txt")),
-                        Template.Parse(System.IO.File.ReadAllText("..\\..\\source\\views\\template-forms\\EditForm.Designer.txt")),
+                        Template.Parse(System.IO.File.ReadAllText("..\\..\\source\\Templates\\EditForm.txt")),
+                        Template.Parse(System.IO.File.ReadAllText("..\\..\\source\\Templates\\EditForm.Designer.txt")),
+                        namespaceString);
+                    break;
+                case Type.Entity:
+                    fileTemplate = new EntityTemplate(
+                        Template.Parse(System.IO.File.ReadAllText("..\\..\\source\\Templates\\EntityTemplate.txt")),
+                        Template.Parse(System.IO.File.ReadAllText("..\\..\\source\\Templates\\FieldTemplate.txt")),
+                        data,
                         namespaceString);
                     break;
             }

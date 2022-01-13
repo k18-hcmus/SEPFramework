@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SEPFramework.source.EntityMeta
 {
-    internal class PrimaryKey
+    public class PrimaryKey
     {
         public List<string> columnNames { get; set; }
         public Dictionary<string, string> references { get; set; } 
