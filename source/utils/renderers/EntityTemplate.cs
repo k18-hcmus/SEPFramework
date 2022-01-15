@@ -1,5 +1,5 @@
 ﻿using Scriban;
-using SEPFramework.source.EntityMeta;
+using SEPFramework.source.SQLSep.Entities;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,9 +13,9 @@ namespace SEPFramework.source.utils.renderers
     {
         private Template entity;
         private Template field;
-        private EntityMetaData data;
+        private TableMapper data;
         private string namespaceString;
-        public EntityTemplate(Template entity, Template field, EntityMetaData data, string namespaceString)
+        public EntityTemplate(Template entity, Template field, TableMapper data, string namespaceString)
         {
             this.entity = entity;
             this.field = field;
@@ -27,10 +27,10 @@ namespace SEPFramework.source.utils.renderers
             string entityData = field.Render(new { namespacestring = this.namespaceString, name = data.mappingTableName, columns = generateEntityColumns(data.columns) });
             FileUtils.GetInstance().CreateFile(path + "\\" + filename + ".cs", entityData);
         }
-        private string generateEntityColumns(Dictionary<string, ColumnMetaData> columns)
+        private string generateEntityColumns(Dictionary<string, ColumnMapper> columns)
         {
             StringBuilder body = new StringBuilder();
-            foreach (KeyValuePair<string, ColumnMetaData> c in columns)
+            foreach (KeyValuePair<string, ColumnMapper> c in columns)
             {
                 string fieldData = field.Render(new { type = c.Value.type, name = c.Value.name });
                 body.Append(fieldData);
