@@ -81,14 +81,25 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="source\Engines\DataProvider.cs" />
-    <Compile Include="source\Engines\EntityTemplateEngine.cs" />
-    <Compile Include="source\Engines\SQLDataTypeMapping.cs" />
-    <Compile Include="source\EntityMeta\ColumnMetaData.cs" />
-    <Compile Include="source\EntityMeta\EntityMetaData.cs" />
-    <Compile Include="source\EntityMeta\ForeignKey.cs" />
-    <Compile Include="source\EntityMeta\PrimaryKey.cs" />
-    <Compile Include="source\Utils\DataUtils.cs" />
+    <Compile Include="source\Poco\Chuong_Trinh_Hoc.cs" />
+    <Compile Include="source\Poco\Giang_Khoa.cs" />
+    <Compile Include="source\Poco\Ket_Qua.cs" />
+    <Compile Include="source\Poco\Khoa.cs" />
+    <Compile Include="source\Poco\Khoa_Hoc.cs" />
+    <Compile Include="source\Poco\Lop.cs" />
+    <Compile Include="source\Poco\Mon_Hoc.cs" />
+    <Compile Include="source\Poco\Sinh_Vien.cs" />
+    <Compile Include="source\SQLSep\SepORM\SQLDatabase.cs" />
+    <Compile Include="source\SQLSep\SepORM\DataProvider.cs" />
+    <Compile Include="source\SQLSep\Engines\EntityTemplateEngine.cs" />
+    <Compile Include="source\SQLSep\SepORM\IDatabase.cs" />
+    <Compile Include="source\SQLSep\SepORM\SQLDataTypeMapping.cs" />
+    <Compile Include="source\SQLSep\Entities\ColumnMapper.cs" />
+    <Compile Include="source\SQLSep\Entities\TableMapper.cs" />
+    <Compile Include="source\SQLSep\Entities\ForeignKey.cs" />
+    <Compile Include="source\SQLSep\Entities\PrimaryKey.cs" />
+    <Compile Include="source\SQLSep\SqlBuilder\SqlBuilder.cs" />
+    <Compile Include="source\SQLSep\SqlQuery\QueryType.cs" />
     <Compile Include="source\Utils\FileUtils.cs" />
     <Compile Include="source\Utils\Renderers\BaseParameter.cs" />
     <Compile Include="source\Utils\Renderers\Factories\EntityFactory.cs" />
@@ -198,13 +209,14 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="source\Controllers\.gitkeep" />
-    <None Include="source\ORMEntities\.gitkeep" />
+    <None Include="source\Poco\.gitkeep" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="source\models\" />
+    <Folder Include="source\SQLSep\Model\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

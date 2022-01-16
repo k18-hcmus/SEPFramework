@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SEPFramework.source.EntityMeta
+namespace SEPFramework.source.SQLSep.Entities
 {
-    public class ColumnMetaData
+    public class ColumnMapper
     {
         public string name { get; set; }
         public string type { get; set; }

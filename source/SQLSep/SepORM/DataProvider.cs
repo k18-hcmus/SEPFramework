@@ -3,33 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SEPFramework.source.EntityMeta;
+using SEPFramework.source.SQLSep.Entities;
 using System.Data.SqlClient;
 using System.Data;
 
 
-namespace SEPFramework.source.Engines
+namespace SEPFramework.source.SQLSep.SepORM
 {
-    internal class DataProvider
+    public class DataProvider
     {
-        // Singleton
-        private static DataProvider instance = null;
-        public string ConnString { get; set; }
-        public static DataProvider Instance
+        private SqlConnection connection;
+        private string connString = "";
+        public DataProvider(string connString)
         {
-            get
-            {
-                if (instance == null) instance = new DataProvider();
-                return instance;
-            }
+            this.connString = connString;
         }
-        public List<EntityMetaData> getTables()
+
+
+        public List<TableMapper> getTables()
         {
             DataTable tables = GetTableList();
-            List<EntityMetaData> entities = new List<EntityMetaData>();
+            List<TableMapper> entities = new List<TableMapper>();
             foreach (DataRow row in tables.Rows)
             {
-                EntityMetaData entity = new EntityMetaData();
+                TableMapper entity = new TableMapper();
                 entity.name = row[0].ToString();
                 entity.mappingTableName = entity.name;
                 entity.columns = GetColumns(entity.name);
@@ -37,13 +34,13 @@ namespace SEPFramework.source.Engines
             }
             return entities;
         }
-        public Dictionary<string, ColumnMetaData> GetColumns(string tableName)
+        public Dictionary<string, ColumnMapper> GetColumns(string tableName)
         {
             DataTable fields = GetColumnList(tableName);
-            Dictionary<string, ColumnMetaData> columns = new Dictionary<string, ColumnMetaData>();
+            Dictionary<string, ColumnMapper> columns = new Dictionary<string, ColumnMapper>();
             foreach (DataRow row in fields.Rows)
             {
-                ColumnMetaData column = new ColumnMetaData();
+                ColumnMapper column = new ColumnMapper();
                 column.mappingColumnName = row[0].ToString();
                 column.mappingColumnType = row[1].ToString();
                 column.name = column.mappingColumnName;
@@ -55,23 +52,25 @@ namespace SEPFramework.source.Engines
 
         public DataTable GetTableList()
         {
-            string queryString = "SELECT TABLE_NAME FROM information_schema.tables WHERE TABLE_TYPE ='BASE TABLE' order by TABLE_NAME";
+            string queryString = "SELECT TABLE_NAME FROM information_schema.tables " +
+                "WHERE TABLE_TYPE ='BASE TABLE' order by TABLE_NAME";
             return GetDataTable(queryString);
         }
 
         public DataTable GetColumnList(string tableName)
         {
-            string queryString = $"SELECT COLUMN_NAME, DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{tableName}'";
+            string queryString = $"SELECT COLUMN_NAME, DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS " +
+                $"WHERE TABLE_NAME = '{tableName}'";
             return GetDataTable(queryString);
         }
 
         public DataTable GetDataTable(string queryString)
         {
             DataTable dataTable = new DataTable();
-            using (SqlConnection connection = new SqlConnection(this.ConnString))
+            using (connection = new SqlConnection(connString))
             {
                 connection.Open();
-                SqlDataAdapter adapter = new SqlDataAdapter(queryString, connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(queryString, this.connection);
                 adapter.Fill(dataTable);
                 connection.Close();
             }
