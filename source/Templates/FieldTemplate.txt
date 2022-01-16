@@ -1,0 +1,1 @@
+\tpublic {{ type }} {{ name }} {get; set;}\n

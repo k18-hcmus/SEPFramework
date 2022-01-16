@@ -74,6 +74,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="source\Engines\DataProvider.cs" />
@@ -90,51 +95,76 @@
     <Compile Include="source\utils\renderers\FormTemplate.cs" />
     <Compile Include="source\utils\renderers\TemplateFactory.cs" />
     <Compile Include="source\views\framework-ui\GeneratingForm.cs">
+    <Compile Include="source\Poco\Chuong_Trinh_Hoc.cs" />
+    <Compile Include="source\Poco\Giang_Khoa.cs" />
+    <Compile Include="source\Poco\Ket_Qua.cs" />
+    <Compile Include="source\Poco\Khoa.cs" />
+    <Compile Include="source\Poco\Khoa_Hoc.cs" />
+    <Compile Include="source\Poco\Lop.cs" />
+    <Compile Include="source\Poco\Mon_Hoc.cs" />
+    <Compile Include="source\Poco\Sinh_Vien.cs" />
+    <Compile Include="source\SQLSep\SepORM\SQLDatabase.cs" />
+    <Compile Include="source\SQLSep\SepORM\DataProvider.cs" />
+    <Compile Include="source\SQLSep\Engines\EntityTemplateEngine.cs" />
+    <Compile Include="source\SQLSep\SepORM\IDatabase.cs" />
+    <Compile Include="source\SQLSep\SepORM\SQLDataTypeMapping.cs" />
+    <Compile Include="source\SQLSep\Entities\ColumnMapper.cs" />
+    <Compile Include="source\SQLSep\Entities\TableMapper.cs" />
+    <Compile Include="source\SQLSep\Entities\ForeignKey.cs" />
+    <Compile Include="source\SQLSep\Entities\PrimaryKey.cs" />
+    <Compile Include="source\SQLSep\SqlBuilder\SqlBuilder.cs" />
+    <Compile Include="source\SQLSep\SqlQuery\QueryType.cs" />
+    <Compile Include="source\Utils\FileUtils.cs" />
+    <Compile Include="source\Utils\renderers\EntityTemplate.cs" />
+    <Compile Include="source\Utils\renderers\FileTemplate.cs" />
+    <Compile Include="source\Utils\renderers\FormTemplate.cs" />
+    <Compile Include="source\Utils\renderers\TemplateFactory.cs" />
+    <Compile Include="source\Views\GeneratingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="source\views\framework-ui\GeneratingForm.Designer.cs">
+    <Compile Include="source\Views\GeneratingForm.Designer.cs">
       <DependentUpon>GeneratingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="source\views\framework-ui\Home.cs">
+    <Compile Include="source\Views\Home.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="source\views\framework-ui\Home.Designer.cs">
+    <Compile Include="source\Views\Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
-    <Compile Include="source\views\framework-ui\Register.cs">
+    <Compile Include="source\Views\Register.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="source\views\framework-ui\Register.Designer.cs">
+    <Compile Include="source\Views\Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
-    <Compile Include="source\views\framework-ui\SignIn.cs">
+    <Compile Include="source\Views\SignIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="source\views\framework-ui\SignIn.Designer.cs">
+    <Compile Include="source\Views\SignIn.Designer.cs">
       <DependentUpon>SignIn.cs</DependentUpon>
     </Compile>
-    <Compile Include="source\views\template-forms\ActionForm.cs">
+    <Compile Include="source\Views\template-forms\ActionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="source\views\template-forms\ActionForm.Designer.cs">
+    <Compile Include="source\Views\template-forms\ActionForm.Designer.cs">
       <DependentUpon>ActionForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="source\views\template-forms\AddForm.cs">
+    <Compile Include="source\Views\template-forms\AddForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="source\views\template-forms\AddForm.Designer.cs">
+    <Compile Include="source\Views\template-forms\AddForm.Designer.cs">
       <DependentUpon>AddForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="source\views\template-forms\BaseForm.cs">
+    <Compile Include="source\Views\template-forms\BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="source\views\template-forms\BaseForm.Designer.cs">
+    <Compile Include="source\Views\template-forms\BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="source\views\template-forms\EditForm.cs">
+    <Compile Include="source\Views\template-forms\EditForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="source\views\template-forms\EditForm.Designer.cs">
+    <Compile Include="source\Views\template-forms\EditForm.Designer.cs">
       <DependentUpon>EditForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -146,7 +176,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="source\views\framework-ui\Home.resx">
+    <EmbeddedResource Include="source\Views\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="source\views\framework-ui\Register.resx">
@@ -156,6 +186,20 @@
       <DependentUpon>SignIn.cs</DependentUpon>
     </EmbeddedResource>
     <None Include=".gitignore" />
+    <EmbeddedResource Include="source\Views\SignIn.resx">
+      <DependentUpon>SignIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -168,18 +212,15 @@
     </Compile>
     <None Include="README.md" />
     <None Include="source\ORMEntities\.gitkeep" />
+    <None Include="source\Controllers\.gitkeep" />
+    <None Include="source\Poco\.gitkeep" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="source\controllers\" />
     <Folder Include="source\models\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="source\Template\EntityTemplate.txt" />
-    <Content Include="sql_data.sql" />
-    <Content Include="sql_schema.sql" />
+    <Folder Include="source\SQLSep\Model\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -192,6 +233,26 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="source\Templates\ActionForm.Designer.txt" />
+    <Content Include="source\Templates\ActionForm.txt" />
+    <Content Include="source\Templates\AddForm.Designer.txt" />
+    <Content Include="source\Templates\AddForm.txt" />
+    <Content Include="source\Templates\BaseForm.Designer.txt" />
+    <Content Include="source\Templates\BaseForm.txt" />
+    <Content Include="source\Templates\EditForm.Designer.txt" />
+    <Content Include="source\Templates\EditForm.txt" />
+    <Content Include="source\Templates\EntityTemplate.txt" />
+    <Content Include="source\Templates\FieldTemplate.txt" />
+    <Content Include="source\Views\template-forms\ActionForm.Designer.txt" />
+    <Content Include="source\Views\template-forms\ActionForm.txt" />
+    <Content Include="source\Views\template-forms\AddForm.Designer.txt" />
+    <Content Include="source\Views\template-forms\AddForm.txt" />
+    <Content Include="source\Views\template-forms\BaseForm.Designer.txt" />
+    <Content Include="source\Views\template-forms\BaseForm.txt" />
+    <Content Include="source\Views\template-forms\EditForm.Designer.txt" />
+    <Content Include="source\Views\template-forms\EditForm.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
