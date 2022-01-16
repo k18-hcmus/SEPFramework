@@ -84,6 +84,8 @@
     <Compile Include="source\EntityMeta\ForeignKey.cs" />
     <Compile Include="source\EntityMeta\PrimaryKey.cs" />
     <Compile Include="source\utils\FileUtils.cs" />
+    <Compile Include="source\utils\membership\Crypto.cs" />
+    <Compile Include="source\utils\membership\Membership.cs" />
     <Compile Include="source\utils\renderers\FileTemplate.cs" />
     <Compile Include="source\utils\renderers\FormTemplate.cs" />
     <Compile Include="source\utils\renderers\TemplateFactory.cs" />
@@ -147,9 +149,13 @@
     <EmbeddedResource Include="source\views\framework-ui\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="source\views\framework-ui\Register.resx">
+      <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="source\views\framework-ui\SignIn.resx">
       <DependentUpon>SignIn.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include=".gitignore" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -160,6 +166,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="README.md" />
     <None Include="source\ORMEntities\.gitkeep" />
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +178,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="source\Template\EntityTemplate.txt" />
+    <Content Include="sql_data.sql" />
+    <Content Include="sql_schema.sql" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
