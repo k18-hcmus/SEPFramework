@@ -59,7 +59,12 @@ namespace SEPFramework.source.views.template_forms
             Mon_Hoc monhoc2 = sqlDB.Get<Mon_Hoc>("THT02");
             monhoc2.TenMH = "Xin chao Viet Nam";
             Console.WriteLine("Old 2: " + monhoc2.MaMH + " " + monhoc2.Ma_Khoa + " " + monhoc2.TenMH);
-
+            Mon_Hoc monhoc3 = new Mon_Hoc();
+            monhoc3.MaMH = "123";
+            monhoc3.TenMH = "monhoc";
+            monhoc3.Ma_Khoa = "123";
+            bool check = sqlDB.Create<Mon_Hoc> (monhoc3);
+            Console.WriteLine(check);
             bool ok = sqlDB.Update<Mon_Hoc>(monhoc, monhoc2);
             
             Mon_Hoc monhocX = sqlDB.Get<Mon_Hoc>("THT01");
