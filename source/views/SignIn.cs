@@ -24,23 +24,6 @@ namespace SEPFramework.source.views
 
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            //Sample Generate Code
-            //DirectoryInfo di = Directory.CreateDirectory("sample");
-            //string namespaceString = "SEPFramework.sample";
-            //TemplateFactory.getTemplate(TemplateFactory.FormType.BaseForm, namespaceString)
-            //    .Render(".\\sample", "BaseForm");
-            //TemplateFactory.getTemplate(TemplateFactory.FormType.ActionForm, namespaceString)
-            //    .Render(".\\sample", "ActionForm");
-            //TemplateFactory.getTemplate(TemplateFactory.FormType.AddForm, namespaceString)
-            //    .Render(".\\sample", "AddForm");
-            //TemplateFactory.getTemplate(TemplateFactory.FormType.EditForm, namespaceString)
-            //    .Render(".\\sample", "EditForm");
-
-
-            //if (true)
-            //{
-            //    this.Close();
-            //}
         }
 
         private void button1_Click(object sender, EventArgs e)

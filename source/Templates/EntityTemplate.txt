@@ -8,6 +8,6 @@ namespace {{ namespacestring }}
 {
     public class {{ name }}
     {
-    {{ columns }}
+{{ columns }}
     }
 }

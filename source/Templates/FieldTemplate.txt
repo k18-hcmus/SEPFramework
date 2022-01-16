@@ -1,1 +1,1 @@
-	public {{ type }} {{ name }} {get; set;}
+		public {{ type }} {{ name }} {get; set;}

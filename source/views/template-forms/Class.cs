@@ -9,9 +9,9 @@ namespace SEPFramework.source.Views.template_forms
 {
     public class Class
     {
-        public string id;
-        public int studentNum;
-        public string name;
+        public string id { get; set; }
+        public int studentNum { get; set; }
+        public string name { get; set; }
         public Class(string id, int studentNum, string name)
         {
             this.id = id;

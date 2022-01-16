@@ -32,7 +32,6 @@ namespace SEPFramework.source.views.template_forms
             this.homeForm = homeForm;
             this.dataType = dataType;
             this.data = DataUtils.ToDataTable<Student>(data);
-            MessageBox.Show(this.data.Rows.Count.ToString());
             InitData();
         }
         public BaseForm(HomeForm homeForm, string dataType, List<Class> data)
@@ -46,7 +45,7 @@ namespace SEPFramework.source.views.template_forms
 
         private void InitData()
         {
-            dgvData.DataSource = data;
+            dgvData.DataSource = this.data;
             return;
             string CONNECTION_STRING = "Data Source=\"localhost, 1433\";" +
                 "Initial Catalog=StudentManagement;User ID=sa;" +
