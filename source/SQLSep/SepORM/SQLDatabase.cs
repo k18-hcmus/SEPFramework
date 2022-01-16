@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Reflection;
@@ -44,9 +45,23 @@ namespace SEPFramework.source.SQLSep.SepORM
         {
             throw new NotImplementedException();
         }
-        public void GetAll<T>() where T : class
+        public List<T> GetAll<T>() where T : class, new()
         {
-            throw new NotImplementedException();
+            List<T> records = new List<T>();
+            String sql = "SELECT * FROM " + typeof(T).Name;
+            Console.WriteLine(sql);
+            SqlDataReader reader = new SqlCommand(sql, connection).ExecuteReader();
+            while (reader.Read())
+            {
+                T entity = new T();
+                foreach (PropertyInfo prop in typeof(T).GetProperties())
+                {
+                    prop.SetValue(entity, reader[prop.Name]);
+                }
+                records.Add(entity);
+            }
+            reader.Close();
+            return records;
         }
 
         public T Get<T>(string ID) where T : class, new()
@@ -76,7 +91,6 @@ namespace SEPFramework.source.SQLSep.SepORM
             foreach (PropertyInfo prop in typeof(T).GetProperties())
             {
                 fields += prop.Name + ",";
-<<<<<<< HEAD
                 values += QuotedName(prop.GetValue(entity).ToString()) + ",";
             }
             values = values.Remove(values.Length - 1, 1);
@@ -84,13 +98,7 @@ namespace SEPFramework.source.SQLSep.SepORM
             string sql = "INSERT INTO " + typeof(T).Name + "(" + fields + ") VALUES (" + values + ")";
             Console.WriteLine(sql);
             int afftectedRow = new SqlCommand(sql, connection).ExecuteNonQuery();
-=======
-                values += prop.GetValue(entity).ToString() + ",";
-            }
-            string query = "INSERT INTO " + typeof(T).Name + "(" + fields + ") VALUES (" + values + ")";
 
-            int afftectedRow = new SqlCommand(query, connection).ExecuteNonQuery();
->>>>>>> main
             return afftectedRow == 1;
         }
 
@@ -114,12 +122,19 @@ namespace SEPFramework.source.SQLSep.SepORM
             return afftectedRow == 1;
         }
 
-        public void Delete<T>(T entity) where T : class
+        public bool Delete<T>(T entity) where T : class
         {
-            throw new NotImplementedException();
+            string keyName = typeof(T).GetProperties()[0].GetValue(entity).ToString();
+
+            String sql = "DELETE FROM " + typeof(T).Name + " WHERE "
+                + typeof(T).GetProperties()[0].Name + " = " + QuotedName(keyName);
+
+            Console.WriteLine(sql);
+            int afftectedRow = new SqlCommand(sql, connection).ExecuteNonQuery();
+            return afftectedRow == 1;
         }
         
-        private string QuotedName(string str)
+        public string QuotedName(string str)
         {
             return String.Format("'{0}'", str);
         }

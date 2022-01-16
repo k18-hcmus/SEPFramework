@@ -33,7 +33,7 @@ namespace SEPFramework.source.views.template_forms
             data.Rows.Add("Quan", "18120521", "kmq@gmail.com");
             data.Rows.Add("Nguyen", "18120488", "tpn@gmail.com");
             dgvData.DataSource = data;
-            
+
             string CONNECTION_STRING = "Data Source=\"localhost, 1433\";" +
                 "Initial Catalog=StudentManagement;User ID=sa;" +
                 "Password=DesignPattern@2022;Connect Timeout=30;" +
@@ -52,24 +52,32 @@ namespace SEPFramework.source.views.template_forms
             sqlDB.Open();
 
             // Demo Get
-            Mon_Hoc monhoc = sqlDB.Get<Mon_Hoc>("THT01");
-            Console.WriteLine("Old 1: " + monhoc.MaMH + " " + monhoc.Ma_Khoa+ " "+ monhoc.TenMH);
+            //Mon_Hoc monhoc = sqlDB.Get<Mon_Hoc>("THT01");
+            //Console.WriteLine("Old 1: " + monhoc.MaMH + " " + monhoc.Ma_Khoa + " " + monhoc.TenMH);
 
             // Demo Update
-            Mon_Hoc monhoc2 = sqlDB.Get<Mon_Hoc>("THT02");
-            monhoc2.TenMH = "Xin chao Viet Nam";
-            Console.WriteLine("Old 2: " + monhoc2.MaMH + " " + monhoc2.Ma_Khoa + " " + monhoc2.TenMH);
+            //Mon_Hoc monhoc2 = sqlDB.Get<Mon_Hoc>("THT02");
+            //monhoc2.TenMH = "Xin chao Viet Nam";
+            //Console.WriteLine("Old 2: " + monhoc2.MaMH + " " + monhoc2.Ma_Khoa + " " + monhoc2.TenMH);
 
-            bool ok = sqlDB.Update<Mon_Hoc>(monhoc, monhoc2);
-            
-            Mon_Hoc monhocX = sqlDB.Get<Mon_Hoc>("THT01");
-            Console.WriteLine("New 1: " + monhocX.MaMH + " " + monhocX.Ma_Khoa + " " + monhocX.TenMH);
+            //bool ok = sqlDB.Update<Mon_Hoc>(monhoc, monhoc2);
 
-            monhoc2.MaMH = "THT003";
-            bool x = sqlDB.Create<Mon_Hoc>(monhoc2);
+            //Mon_Hoc monhocX = sqlDB.Get<Mon_Hoc>("THT01");
+            //Console.WriteLine("New 1: " + monhocX.MaMH + " " + monhocX.Ma_Khoa + " " + monhocX.TenMH);
 
-            Mon_Hoc monhocY = sqlDB.Get<Mon_Hoc>("THT003");
-            Console.WriteLine("New inserted: " + monhocY.MaMH + " " + monhocY.Ma_Khoa + " " + monhocY.TenMH);
+            // Demo Create
+            //monhoc2.MaMH = "THT003";
+            //bool x = sqlDB.Create<Mon_Hoc>(monhoc2);
+
+            //Mon_Hoc monhocY = sqlDB.Get<Mon_Hoc>("THT003");
+            //Console.WriteLine("New inserted: " + monhocY.MaMH + " " + monhocY.Ma_Khoa + " " + monhocY.TenMH);
+
+            // Demo Get All
+            List<Mon_Hoc> subjects = sqlDB.GetAll<Mon_Hoc>();
+            foreach(Mon_Hoc subject in subjects)
+            {
+                Console.WriteLine(subject.MaMH + " " + subject.Ma_Khoa + " " + subject.TenMH);
+            }
 
         }
 
