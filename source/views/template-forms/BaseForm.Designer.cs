@@ -28,26 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvData = new System.Windows.Forms.DataGridView();
             this.pnlButton = new System.Windows.Forms.Panel();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.pnlButton.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // dgvData
-            // 
-            this.dgvData.AllowUserToAddRows = false;
-            this.dgvData.AllowUserToDeleteRows = false;
-            this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvData.Location = new System.Drawing.Point(13, 12);
-            this.dgvData.MultiSelect = false;
-            this.dgvData.Name = "dgvData";
-            this.dgvData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvData.Size = new System.Drawing.Size(775, 362);
-            this.dgvData.TabIndex = 0;
             // 
             // pnlButton
             // 
@@ -98,10 +84,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.pnlButton);
-            this.Controls.Add(this.dgvData);
             this.Name = "BaseForm";
             this.Text = "BaseForm";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BaseForm_FormClosed);
             this.pnlButton.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -112,6 +97,5 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnEdit;
-        public System.Windows.Forms.DataGridView dgvData;
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Scriban;
-using SEPFramework.source.EntityMeta;
 using SEPFramework.source.Utils.Renderers;
 using SEPFramework.source.Utils.Renderers.Parameters;
 using SEPFramework.source.Utils.Renderers.Templates;

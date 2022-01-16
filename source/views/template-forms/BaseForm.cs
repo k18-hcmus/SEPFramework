@@ -1,5 +1,9 @@
 ﻿using SEPFramework.source.Engines;
-using SEPFramework.source.EntityMeta;
+using SEPFramework.source.SQLSep.Entities;
+using SEPFramework.source.SQLSep.SepORM;
+using SEPFramework.source.Utils;
+using SEPFramework.source.Views.template_forms;
+using source.Poco;
 using SEPFramework.source.Utils.Renderers;
 using SEPFramework.source.Utils.Renderers.Factories;
 using SEPFramework.source.Utils.Renderers.Parameters;
@@ -20,32 +24,55 @@ namespace SEPFramework.source.views.template_forms
     public partial class BaseForm : Form
     {
         public DataTable data = new DataTable();
-        public BaseForm(List<object> data, Type type)
+        private HomeForm homeForm = null;
+        private string dataType = "";
+        public BaseForm(HomeForm homeForm, string dataType, List<Student> data)
         {
             InitializeComponent();
-            InitData(data, type);
+            this.homeForm = homeForm;
+            this.dataType = dataType;
+            this.data = DataUtils.ToDataTable<Student>(data);
+            MessageBox.Show(this.data.Rows.Count.ToString());
+            InitData();
+        }
+        public BaseForm(HomeForm homeForm, string dataType, List<Class> data)
+        {
+            InitializeComponent();
+            this.homeForm = homeForm;
+            this.dataType = dataType;
+            this.data = DataUtils.ToDataTable<Class>(data);
+            InitData();
         }
 
-        private void InitData(List<object> list_data, Type type)
+        private void InitData()
         {
-            data = ToDataTable<Student>((List<Student>)(object)list_data);
             dgvData.DataSource = data;
-            DataProvider dataProvider = DataProvider.Instance;
-            dataProvider.ConnString = "Data Source=\"localhost, 1433\";" +
+            return;
+            string CONNECTION_STRING = "Data Source=\"localhost, 1433\";" +
                 "Initial Catalog=StudentManagement;User ID=sa;" +
                 "Password=DesignPattern@2022;Connect Timeout=30;" +
                 "Encrypt=False;TrustServerCertificate=False" +
                 ";ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-            List<EntityMetaData> tables = dataProvider.getTables();
-            ITemplateFactory entityFactory = new EntityFactory();
-            string namespaceString = "SEP.SampleSource";
-            DirectoryInfo di = Directory.CreateDirectory("SampleSource");
-            string path = ".\\SampleSource";
-            foreach (EntityMetaData t in tables)
-            {
-                ITemplate entityTemplate = entityFactory.GetTemplate(new EntityParameter(t, namespaceString));
-                entityTemplate.Render(path, t.name);
-            }
+            DataProvider dataProvider = new DataProvider(CONNECTION_STRING);
+
+            IDatabase sqlDB = new SQLDatabase(CONNECTION_STRING);
+            sqlDB.Open();
+
+            // Demo Get
+            Mon_Hoc monhoc = sqlDB.Get<Mon_Hoc>("THT01");
+            Console.WriteLine("Old 1: " + monhoc.MaMH + " " + monhoc.Ma_Khoa+ " "+ monhoc.TenMH);
+
+            // Demo Update
+            Mon_Hoc monhoc2 = sqlDB.Get<Mon_Hoc>("THT02");
+            monhoc2.TenMH = "Xin chao Viet Nam";
+            Console.WriteLine("Old 2: " + monhoc2.MaMH + " " + monhoc2.Ma_Khoa + " " + monhoc2.TenMH);
+
+            bool ok = sqlDB.Update<Mon_Hoc>(monhoc, monhoc2);
+            
+            Mon_Hoc monhocX = sqlDB.Get<Mon_Hoc>("THT01");
+            Console.WriteLine("New 1: " + monhocX.MaMH + " " + monhocX.Ma_Khoa + " " + monhocX.TenMH);
+
+
         }
 
         private void Add_Click(object sender, EventArgs e)
@@ -76,6 +103,11 @@ namespace SEPFramework.source.views.template_forms
             {
                 data.Rows.Remove(data.Rows[selectedRow.Index]);
             }
+        }
+
+        private void BaseForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            homeForm.RefeshData(dataType);
         }
     }
 }
