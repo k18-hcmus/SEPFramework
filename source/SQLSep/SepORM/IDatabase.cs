@@ -11,13 +11,11 @@ namespace SEPFramework.source.SQLSep.SepORM
         bool Open();
         bool Close();
         void CreateTableIfNotExist();
-
-        void GetAll<T>() where T : class;
-
-        T Get<T>(string ID) where T : class, new();
-        bool Create<T>(T entity) where T : class;
-
+        List<T> GetList<T>(string whereConditions = "") where T : class,new();
+        T Get<T>(string sql) where T : class, new();
+        T GetByID<T>(string ID) where T : class, new();
+        bool Insert<T>(T entity) where T : class;
         bool Update<T>(T oldEntity, T newEntity) where T : class;
-        void Delete<T>(T entity) where T :  class;
+        bool Delete<T>(T entity) where T :  class;
     }
 }
