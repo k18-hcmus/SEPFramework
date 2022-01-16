@@ -51,33 +51,44 @@ namespace SEPFramework.source.views.template_forms
             IDatabase sqlDB = new SQLDatabase(CONNECTION_STRING);
             sqlDB.Open();
 
-            // Demo Get
-            //Mon_Hoc monhoc = sqlDB.Get<Mon_Hoc>("THT01");
+            //// Demo Get
+            //Mon_Hoc monhoc = sqlDB.GetByID<Mon_Hoc>("THT01");
             //Console.WriteLine("Old 1: " + monhoc.MaMH + " " + monhoc.Ma_Khoa + " " + monhoc.TenMH);
 
-            // Demo Update
-            //Mon_Hoc monhoc2 = sqlDB.Get<Mon_Hoc>("THT02");
-            //monhoc2.TenMH = "Xin chao Viet Nam";
+            //// Demo Update
+            //Mon_Hoc monhoc2 = sqlDB.GetByID<Mon_Hoc>("THT02");
+            //monhoc2.TenMH = "Xin chao Viet Nam 2";
             //Console.WriteLine("Old 2: " + monhoc2.MaMH + " " + monhoc2.Ma_Khoa + " " + monhoc2.TenMH);
 
             //bool ok = sqlDB.Update<Mon_Hoc>(monhoc, monhoc2);
 
-            //Mon_Hoc monhocX = sqlDB.Get<Mon_Hoc>("THT01");
+            //Mon_Hoc monhocX = sqlDB.GetByID<Mon_Hoc>("THT01");
             //Console.WriteLine("New 1: " + monhocX.MaMH + " " + monhocX.Ma_Khoa + " " + monhocX.TenMH);
 
-            // Demo Create
+            //// Demo Insert
             //monhoc2.MaMH = "THT003";
-            //bool x = sqlDB.Create<Mon_Hoc>(monhoc2);
+            //bool x = sqlDB.Insert<Mon_Hoc>(monhoc2);
 
-            //Mon_Hoc monhocY = sqlDB.Get<Mon_Hoc>("THT003");
+            //Mon_Hoc monhocY = sqlDB.GetByID<Mon_Hoc>("THT003");
             //Console.WriteLine("New inserted: " + monhocY.MaMH + " " + monhocY.Ma_Khoa + " " + monhocY.TenMH);
 
-            // Demo Get All
-            List<Mon_Hoc> subjects = sqlDB.GetAll<Mon_Hoc>();
-            foreach(Mon_Hoc subject in subjects)
-            {
-                Console.WriteLine(subject.MaMH + " " + subject.Ma_Khoa + " " + subject.TenMH);
-            }
+            //// Demo Get List Normal
+            //List<Mon_Hoc> subjects = sqlDB.GetList<Mon_Hoc>();
+            //foreach (Mon_Hoc subject in subjects)
+            //{
+            //    Console.WriteLine(subject.MaMH + " " + subject.Ma_Khoa + " " + subject.TenMH);
+            //}
+            //// Demo Get List With Conditions
+            //List<Mon_Hoc> conditionSubs = sqlDB.GetList<Mon_Hoc>(string.Format("MaMH = '{0}'", "THT02"));
+            //foreach (Mon_Hoc subject in conditionSubs)
+            //{
+            //    Console.WriteLine(subject.MaMH + " " + subject.Ma_Khoa + " " + subject.TenMH);
+            //}
+
+            // Demo Get With Conditions
+            Mon_Hoc monhoc = sqlDB.Get<Mon_Hoc>("SELECT * FROM Mon_Hoc WHERE MaMH = 'THT02'");
+            Console.WriteLine("Get With Condition " + monhoc.MaMH + " " + monhoc.Ma_Khoa + " " + monhoc.TenMH);
+
 
         }
 
