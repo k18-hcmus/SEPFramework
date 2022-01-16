@@ -65,6 +65,11 @@ namespace SEPFramework.source.views.template_forms
             Mon_Hoc monhocX = sqlDB.Get<Mon_Hoc>("THT01");
             Console.WriteLine("New 1: " + monhocX.MaMH + " " + monhocX.Ma_Khoa + " " + monhocX.TenMH);
 
+            monhoc2.MaMH = "THT003";
+            bool x = sqlDB.Create<Mon_Hoc>(monhoc2);
+
+            Mon_Hoc monhocY = sqlDB.Get<Mon_Hoc>("THT003");
+            Console.WriteLine("New inserted: " + monhocY.MaMH + " " + monhocY.Ma_Khoa + " " + monhocY.TenMH);
 
         }
 
