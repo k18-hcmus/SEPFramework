@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,22 +14,13 @@ namespace {{ namespacestring }}
     public partial class BaseForm : Form
     {
         public DataTable data = new DataTable();
-        public BaseForm()
-        {
-            InitializeComponent();
-            InitMockData();
-        }
+        private HomeForm homeForm = null;
+        private string dataType = "";
+{{ constructors }}
 
-        private void InitMockData()
+        private void InitData()
         {
-            data.Columns.Add("Name");
-            data.Columns.Add("MSSV");
-            data.Columns.Add("Email");
-            data.Rows.Add("Nhan", "18120495", "ttn@gmail.com");
-            data.Rows.Add("Long", "18120449", "nhl@gmail.com");
-            data.Rows.Add("Quan", "18120521", "kmq@gmail.com");
-            data.Rows.Add("Nguyen", "18120488", "tpn@gmail.com");
-            dgvData.DataSource = data;
+            dgvData.DataSource = this.data;
         }
 
         private void Add_Click(object sender, EventArgs e)
@@ -59,6 +51,11 @@ namespace {{ namespacestring }}
             {
                 data.Rows.Remove(data.Rows[selectedRow.Index]);
             }
+        }
+
+        private void BaseForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            homeForm.RefeshData(dataType);
         }
     }
 }

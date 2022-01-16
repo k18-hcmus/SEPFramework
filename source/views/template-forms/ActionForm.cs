@@ -70,10 +70,10 @@ namespace SEPFramework.source.views.template_forms
                         if (!rowValueInput.Text.ToString().Equals(""))
                             inputText = rowValueInput.Text;
                         Size size = TextRenderer.MeasureText(inputText, rowValueInput.Font);
-                        rowValueInput.Size = size;
+                        rowValueInput.Size = new Size(size.Width + 25, size.Height);
                         rowValueInput.Location = new Point(rowLabel.Size.Width + margin, 0);
                         rowPanel.Controls.Add(rowValueInput);
-                        panelSize = new Size(rowLabel.Size.Width + margin + rowValueInput.Size.Width + 2*margin, rowLabel.Size.Height + 2*margin);
+                        panelSize = new Size(rowLabel.Size.Width + 25 + margin + rowValueInput.Size.Width + 2*margin, rowLabel.Size.Height + 2*margin);
                         break;
                 }
                 rowPanel.Location = new Point(4, panelTop);

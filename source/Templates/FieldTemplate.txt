@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 \tpublic {{ type }} {{ name }} {get; set;}\n
+=======
+		public {{ type }} {{ name }} {get; set;}
+>>>>>>> 93f61f1 (Generate Multiple Table)

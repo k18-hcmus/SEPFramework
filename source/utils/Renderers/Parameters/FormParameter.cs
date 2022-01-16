@@ -1,0 +1,36 @@
+﻿using Scriban;
+using SEPFramework.source.SQLSep.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SEPFramework.source.Utils.Renderers.Parameters
+{
+    public class FormParameter : BaseParameter
+    {
+        public enum Type
+        {
+            BaseForm,
+            ActionForm,
+            AddForm,
+            EditForm,
+            HomeForm
+        }
+        private Type formType;
+        public Type FormType { get => formType; set => formType = value; }
+        private List<TableMapper> data;
+        public List<TableMapper> Data { get => data; set => data = value; }
+
+        public FormParameter(Type formType, string namespaceString, List<TableMapper> data) : base(namespaceString)
+        {
+            this.FormType = formType;
+            this.Data = data;
+        }
+        public FormParameter(Type formType, string namespaceString) : base(namespaceString)
+        {
+            this.FormType = formType;
+        }
+    }
+}

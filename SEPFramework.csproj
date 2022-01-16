@@ -100,13 +100,23 @@
     <Compile Include="source\SQLSep\Entities\PrimaryKey.cs" />
     <Compile Include="source\SQLSep\SqlBuilder\SqlBuilder.cs" />
     <Compile Include="source\SQLSep\SqlQuery\QueryType.cs" />
+    <Compile Include="source\Utils\DataUtils.cs" />
     <Compile Include="source\Utils\FileUtils.cs" />
     <Compile Include="source\Utils\membership\Crypto.cs" />
     <Compile Include="source\Utils\membership\Membership.cs" />
-    <Compile Include="source\Utils\renderers\EntityTemplate.cs" />
-    <Compile Include="source\Utils\renderers\FileTemplate.cs" />
-    <Compile Include="source\Utils\renderers\FormTemplate.cs" />
-    <Compile Include="source\Utils\renderers\TemplateFactory.cs" />
+    <Compile Include="source\Utils\Renderers\BaseParameter.cs" />
+    <Compile Include="source\Utils\Renderers\Factories\EntityFactory.cs" />
+    <Compile Include="source\Utils\Renderers\Factories\UtilFactory.cs" />
+    <Compile Include="source\Utils\Renderers\Parameters\EntityParameter.cs" />
+    <Compile Include="source\Utils\Renderers\Parameters\FormParameter.cs" />
+    <Compile Include="source\Utils\Renderers\Templates\BaseFormTemplate.cs" />
+    <Compile Include="source\Utils\Renderers\Templates\EntityTemplate.cs" />
+    <Compile Include="source\Utils\Renderers\Factories\FormFactory.cs" />
+    <Compile Include="source\Utils\Renderers\ITemplate.cs" />
+    <Compile Include="source\Utils\Renderers\Templates\FormTemplate.cs" />
+    <Compile Include="source\Utils\Renderers\ITemplateFactory.cs" />
+    <Compile Include="source\Utils\Renderers\Templates\HomeFormTemplate.cs" />
+    <Compile Include="source\Utils\Renderers\Templates\UtilTemplate.cs" />
     <Compile Include="source\Views\GeneratingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,6 +174,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="source\Views\GeneratingForm.resx">
+      <DependentUpon>GeneratingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="source\Views\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
@@ -193,6 +206,9 @@
     </Compile>
     <None Include="source\Controllers\.gitkeep" />
     <None Include="source\Poco\.gitkeep" />
+    <Content Include="source\Templates\BaseForm\Constructor.txt" />
+    <Content Include="source\Templates\Utils\DataUtils.txt" />
+    <Content Include="source\Templates\HomeForm\HomeForm.Designer.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -218,12 +234,16 @@
     <Content Include="source\Templates\ActionForm.txt" />
     <Content Include="source\Templates\AddForm.Designer.txt" />
     <Content Include="source\Templates\AddForm.txt" />
-    <Content Include="source\Templates\BaseForm.Designer.txt" />
-    <Content Include="source\Templates\BaseForm.txt" />
+    <Content Include="source\Templates\BaseForm\BaseForm.Designer.txt" />
+    <Content Include="source\Templates\BaseForm\BaseForm.txt" />
     <Content Include="source\Templates\EditForm.Designer.txt" />
     <Content Include="source\Templates\EditForm.txt" />
     <Content Include="source\Templates\EntityTemplate.txt" />
     <Content Include="source\Templates\FieldTemplate.txt" />
+    <Content Include="source\Templates\HomeForm\HomeForm.txt" />
+    <Content Include="source\Templates\HomeForm\ListEntity.txt" />
+    <Content Include="source\Templates\HomeForm\OpenFormButton.txt" />
+    <Content Include="source\Templates\HomeForm\OpenFormCase.txt" />
     <Content Include="source\Views\template-forms\ActionForm.Designer.txt" />
     <Content Include="source\Views\template-forms\ActionForm.txt" />
     <Content Include="source\Views\template-forms\AddForm.Designer.txt" />

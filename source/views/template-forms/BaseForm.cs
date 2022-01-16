@@ -20,20 +20,24 @@ namespace SEPFramework.source.views.template_forms
         public BaseForm()
         {
             InitializeComponent();
-            InitMockData();
+            this.homeForm = homeForm;
+            this.dataType = dataType;
+            this.data = DataUtils.ToDataTable<Student>(data);
+            InitData();
+        }
+        public BaseForm(HomeForm homeForm, string dataType, List<Class> data)
+        {
+            InitializeComponent();
+            this.homeForm = homeForm;
+            this.dataType = dataType;
+            this.data = DataUtils.ToDataTable<Class>(data);
+            InitData();
         }
 
         private void InitMockData()
         {
-            data.Columns.Add("Name");
-            data.Columns.Add("MSSV");
-            data.Columns.Add("Email");
-            data.Rows.Add("Nhan", "18120495", "ttn@gmail.com");
-            data.Rows.Add("Long", "18120449", "nhl@gmail.com");
-            data.Rows.Add("Quan", "18120521", "kmq@gmail.com");
-            data.Rows.Add("Nguyen", "18120488", "tpn@gmail.com");
-            dgvData.DataSource = data;
-
+            dgvData.DataSource = this.data;
+            return;
             string CONNECTION_STRING = "Data Source=\"localhost, 1433\";" +
                 "Initial Catalog=StudentManagement;User ID=sa;" +
                 "Password=DesignPattern@2022;Connect Timeout=30;" +
