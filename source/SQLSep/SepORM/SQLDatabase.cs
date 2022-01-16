@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Reflection;
 using System.Text;
 
@@ -44,22 +46,78 @@ namespace SEPFramework.source.SQLSep.SepORM
         {
             throw new NotImplementedException();
         }
-        public void GetAll<T>() where T : class
+        public List<T> GetList<T>(string whereConditions = "") where T : class, new()
         {
-            throw new NotImplementedException();
+            // Build Query
+            var tableName = typeof(T).Name;
+            var props = typeof(T).GetProperties();
+
+            var sb = new StringBuilder();
+            sb.Append("SELECT *");
+            sb.AppendFormat(" FROM {0}", tableName);
+            if (whereConditions != "") sb.Append(" WHERE " + whereConditions);
+
+            String sql = sb.ToString();
+            Trace.WriteLine(sql);
+
+            // Execute Query 
+            List<T> records = new List<T>();
+            SqlDataReader reader = new SqlCommand(sql, connection).ExecuteReader();
+            while (reader.Read())
+            {
+                T entity = new T();
+                foreach (PropertyInfo prop in props)
+                {
+                    prop.SetValue(entity, reader[prop.Name]);
+                }
+                records.Add(entity);
+            }
+            reader.Close();
+            return records;
         }
-
-        public T Get<T>(string ID) where T : class, new()
+        public T Get<T>(string sql) where T : class, new()
         {
-            T model = new T();
-            String sql = "SELECT * FROM " + typeof(T).Name + " WHERE " + typeof(T).GetProperties()[0].Name
-                + " = " + QuotedName(ID);
+            // Build Query
+            var tableName = typeof(T).Name;
+            var props = typeof(T).GetProperties();
 
-            Console.WriteLine(sql);
+            // Execute Query 
+            T model = new T();
             SqlDataReader reader = new SqlCommand(sql, connection).ExecuteReader();
             if (reader.Read())
             {
-                foreach (PropertyInfo prop in typeof(T).GetProperties())
+                foreach (PropertyInfo prop in props)
+                {
+                    prop.SetValue(model, reader[prop.Name]);
+                }
+                reader.Close();
+                return model;
+            }
+            reader.Close();
+            return null;
+        }
+        public T GetByID<T>(string ID) where T : class, new()
+        {
+            // Build Query
+            var tableName = typeof(T).Name;
+            var props = typeof(T).GetProperties();
+
+            if(props.Length <= 0)
+                throw new ArgumentException("GetByID<T> only supports an entity with a PrimaryKey or Id property");
+
+            var sb = new StringBuilder();
+            sb.Append("SELECT *");
+            sb.AppendFormat(" FROM {0} WHERE ", tableName);
+            sb.AppendFormat("{0} = {1}", props[0].Name, QuotedName(ID));
+            string sql = sb.ToString();
+            Trace.WriteLine(sql);
+
+            // Execute Query 
+            T model = new T();
+            SqlDataReader reader = new SqlCommand(sql, connection).ExecuteReader();
+            if (reader.Read())
+            {
+                foreach (PropertyInfo prop in props)
                 {
                     prop.SetValue(model, reader[prop.Name]);
                 }
@@ -70,49 +128,84 @@ namespace SEPFramework.source.SQLSep.SepORM
             return null;
         }
 
-        public bool Create<T>(T entity) where T : class
+        public bool Insert<T>(T entity) where T : class
         {
-            String fields = "", values = "";
-            foreach (PropertyInfo prop in typeof(T).GetProperties())
+            // Build Query
+            var tableName = typeof(T).Name;
+            var props = typeof(T).GetProperties();
+
+            string fields = "", values = "";
+            foreach (PropertyInfo prop in props)
             {
                 fields += prop.Name + ",";
-                values += prop.GetValue(entity).ToString() + ",";
+                values += QuotedName(prop.GetValue(entity).ToString()) + ",";
             }
-            string query = "INSERT INTO " + typeof(T).Name + "(" + fields + ") VALUES (" + values + ")";
+            values = values.Remove(values.Length - 1, 1);
+            fields = fields.Remove(fields.Length - 1, 1);
 
-            int afftectedRow = new SqlCommand(query, connection).ExecuteNonQuery();
+            var sb = new StringBuilder();
+            sb.AppendFormat("INSERT INTO {0}", tableName);
+            sb.AppendFormat(" ({0}) ", fields);
+            sb.AppendFormat("VALUES ({0})", values);
+            string sql = sb.ToString(); 
+            Trace.WriteLine(sql);
+
+            // Execute Query 
+            int afftectedRow = new SqlCommand(sql, connection).ExecuteNonQuery();
             return afftectedRow == 1;
         }
 
         public bool Update<T>(T oldEntity, T newEntity) where T : class
         {
-            String fieldsUpdate = "";
-            foreach (PropertyInfo prop in typeof(T).GetProperties())
+            // Build Query
+            var tableName = typeof(T).Name;
+            var props = typeof(T).GetProperties();
+
+            string fieldsUpdate = "";
+            foreach (PropertyInfo prop in props)
             {
                 if (typeof(T).GetProperties()[0] == prop) continue;
                 fieldsUpdate += prop.Name + " = " + QuotedName(prop.GetValue(newEntity).ToString()) + ",";
             }
             fieldsUpdate = fieldsUpdate.Remove(fieldsUpdate.Length - 1, 1);
 
-            string ID = typeof(T).GetProperties()[0].GetValue(oldEntity).ToString();
+            string keyName = props[0].GetValue(oldEntity).ToString();
 
-            String sql = "UPDATE " + typeof(T).Name + " SET " + fieldsUpdate + " WHERE " 
-                + typeof(T).GetProperties()[0].Name + " = " + QuotedName(ID);
+            var sb = new StringBuilder();
+            sb.AppendFormat("UPDATE {0} ", tableName);
+            sb.AppendFormat("SET {0} ", fieldsUpdate);
+            sb.AppendFormat("WHERE {0} = {1}", props[0].Name, QuotedName(keyName));
+            string sql = sb.ToString();
+            Trace.WriteLine(sql);
 
-            Console.WriteLine(sql);
+            // Execute Query 
             int afftectedRow = new SqlCommand(sql, connection).ExecuteNonQuery();
             return afftectedRow == 1;
         }
 
-        public void Delete<T>(T entity) where T : class
+        public bool Delete<T>(T entity) where T : class
         {
-            throw new NotImplementedException();
+            // Build Query
+            var tableName = typeof(T).Name;
+            var props = typeof(T).GetProperties();
+
+            string keyName = props[0].GetValue(entity).ToString();
+
+            var sb = new StringBuilder();
+            sb.AppendFormat("DELETE FROM {0} ", tableName);
+            sb.AppendFormat("WHERE {0} = {1}", props[0].Name, QuotedName(keyName));
+            string sql = sb.ToString();
+            Trace.WriteLine(sql);
+
+            // Execute Query 
+            int afftectedRow = new SqlCommand(sql, connection).ExecuteNonQuery();
+            return afftectedRow == 1;
         }
         
-        private string QuotedName(string str)
+        public string QuotedName(string str)
         {
             return String.Format("'{0}'", str);
         }
-
+ 
     }
 }

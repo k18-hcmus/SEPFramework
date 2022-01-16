@@ -46,32 +46,6 @@ namespace SEPFramework.source.views.template_forms
         private void InitData()
         {
             dgvData.DataSource = this.data;
-            return;
-            string CONNECTION_STRING = "Data Source=\"localhost, 1433\";" +
-                "Initial Catalog=StudentManagement;User ID=sa;" +
-                "Password=DesignPattern@2022;Connect Timeout=30;" +
-                "Encrypt=False;TrustServerCertificate=False" +
-                ";ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-            DataProvider dataProvider = new DataProvider(CONNECTION_STRING);
-
-            IDatabase sqlDB = new SQLDatabase(CONNECTION_STRING);
-            sqlDB.Open();
-
-            // Demo Get
-            Mon_Hoc monhoc = sqlDB.Get<Mon_Hoc>("THT01");
-            Console.WriteLine("Old 1: " + monhoc.MaMH + " " + monhoc.Ma_Khoa+ " "+ monhoc.TenMH);
-
-            // Demo Update
-            Mon_Hoc monhoc2 = sqlDB.Get<Mon_Hoc>("THT02");
-            monhoc2.TenMH = "Xin chao Viet Nam";
-            Console.WriteLine("Old 2: " + monhoc2.MaMH + " " + monhoc2.Ma_Khoa + " " + monhoc2.TenMH);
-
-            bool ok = sqlDB.Update<Mon_Hoc>(monhoc, monhoc2);
-            
-            Mon_Hoc monhocX = sqlDB.Get<Mon_Hoc>("THT01");
-            Console.WriteLine("New 1: " + monhocX.MaMH + " " + monhocX.Ma_Khoa + " " + monhocX.TenMH);
-
-
         }
 
         private void Add_Click(object sender, EventArgs e)

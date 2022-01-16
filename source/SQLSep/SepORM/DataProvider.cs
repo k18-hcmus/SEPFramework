@@ -19,7 +19,6 @@ namespace SEPFramework.source.SQLSep.SepORM
             this.connString = connString;
         }
 
-
         public List<TableMapper> getTables()
         {
             DataTable tables = GetTableList();
