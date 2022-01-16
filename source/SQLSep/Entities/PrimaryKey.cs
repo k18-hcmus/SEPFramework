@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SEPFramework.source.EntityMeta
+namespace SEPFramework.source.SQLSep.Entities
 {
     public class PrimaryKey
     {

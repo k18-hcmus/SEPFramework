@@ -1,5 +1,5 @@
 ﻿using Scriban;
-using SEPFramework.source.EntityMeta;
+using SEPFramework.source.SQLSep.Entities;
 using SEPFramework.source.views.template_forms;
 using System;
 using System.Collections.Generic;
@@ -32,7 +32,7 @@ namespace SEPFramework.source.utils.renderers
             //formDesignerDict.Add(Type.AddForm, System.IO.File.ReadAllText("..\\..\\source\\Templates\\AddForm.Designer.txt"));
             //formDesignerDict.Add(Type.EditForm, System.IO.File.ReadAllText("..\\..\\source\\Templates\\EditForm.Designer.txt"));
         }
-        public static ITemplate getTemplate(Type type, string namespaceString, EntityMetaData data = null)
+        public static ITemplate getTemplate(Type type, string namespaceString, TableMapper data = null)
         {
             ITemplate fileTemplate = null;
             switch (type)
