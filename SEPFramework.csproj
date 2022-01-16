@@ -101,6 +101,8 @@
     <Compile Include="source\SQLSep\SqlBuilder\SqlBuilder.cs" />
     <Compile Include="source\SQLSep\SqlQuery\QueryType.cs" />
     <Compile Include="source\Utils\FileUtils.cs" />
+    <Compile Include="source\Utils\membership\Crypto.cs" />
+    <Compile Include="source\Utils\membership\Membership.cs" />
     <Compile Include="source\Utils\renderers\EntityTemplate.cs" />
     <Compile Include="source\Utils\renderers\FileTemplate.cs" />
     <Compile Include="source\Utils\renderers\FormTemplate.cs" />
@@ -231,6 +233,7 @@
     <Content Include="source\Views\template-forms\EditForm.Designer.txt" />
     <Content Include="source\Views\template-forms\EditForm.txt" />
     <Content Include="sql_data.sql" />
+    <Content Include="sql_schema.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

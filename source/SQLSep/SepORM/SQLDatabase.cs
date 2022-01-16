@@ -98,7 +98,10 @@ namespace SEPFramework.source.SQLSep.SepORM
             string sql = "INSERT INTO " + typeof(T).Name + "(" + fields + ") VALUES (" + values + ")";
             Console.WriteLine(sql);
             int afftectedRow = new SqlCommand(sql, connection).ExecuteNonQuery();
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
             return afftectedRow == 1;
         }
 
