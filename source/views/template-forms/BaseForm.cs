@@ -70,6 +70,7 @@ namespace SEPFramework.source.views.template_forms
 
             Mon_Hoc monhocY = sqlDB.Get<Mon_Hoc>("THT003");
             Console.WriteLine("New inserted: " + monhocY.MaMH + " " + monhocY.Ma_Khoa + " " + monhocY.TenMH);
+
         }
 
         private void Add_Click(object sender, EventArgs e)

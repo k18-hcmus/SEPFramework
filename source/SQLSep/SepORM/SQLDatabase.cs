@@ -76,6 +76,7 @@ namespace SEPFramework.source.SQLSep.SepORM
             foreach (PropertyInfo prop in typeof(T).GetProperties())
             {
                 fields += prop.Name + ",";
+<<<<<<< HEAD
                 values += QuotedName(prop.GetValue(entity).ToString()) + ",";
             }
             values = values.Remove(values.Length - 1, 1);
@@ -83,6 +84,13 @@ namespace SEPFramework.source.SQLSep.SepORM
             string sql = "INSERT INTO " + typeof(T).Name + "(" + fields + ") VALUES (" + values + ")";
             Console.WriteLine(sql);
             int afftectedRow = new SqlCommand(sql, connection).ExecuteNonQuery();
+=======
+                values += prop.GetValue(entity).ToString() + ",";
+            }
+            string query = "INSERT INTO " + typeof(T).Name + "(" + fields + ") VALUES (" + values + ")";
+
+            int afftectedRow = new SqlCommand(query, connection).ExecuteNonQuery();
+>>>>>>> main
             return afftectedRow == 1;
         }
 
