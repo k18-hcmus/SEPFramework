@@ -26,22 +26,22 @@ namespace SEPFramework.source.views.template_forms
         public DataTable data = new DataTable();
         private HomeForm homeForm = null;
         private string dataType = "";
-        public BaseForm(HomeForm homeForm, string dataType, List<Student> data)
-        {
-            InitializeComponent();
-            this.homeForm = homeForm;
-            this.dataType = dataType;
-            this.data = DataUtils.ToDataTable<Student>(data);
-            InitData();
-        }
-        public BaseForm(HomeForm homeForm, string dataType, List<Class> data)
-        {
-            InitializeComponent();
-            this.homeForm = homeForm;
-            this.dataType = dataType;
-            this.data = DataUtils.ToDataTable<Class>(data);
-            InitData();
-        }
+        //public BaseForm(HomeForm homeForm, string dataType, List<Student> data)
+        //{
+        //    InitializeComponent();
+        //    this.homeForm = homeForm;
+        //    this.dataType = dataType;
+        //    this.data = DataUtils.ToDataTable<Student>(data);
+        //    InitData();
+        //}
+        //public BaseForm(HomeForm homeForm, string dataType, List<Class> data)
+        //{
+        //    InitializeComponent();
+        //    this.homeForm = homeForm;
+        //    this.dataType = dataType;
+        //    this.data = DataUtils.ToDataTable<Class>(data);
+        //    InitData();
+        //}
 
         private void InitData()
         {

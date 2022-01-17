@@ -107,15 +107,18 @@
     <Compile Include="source\Utils\renderers\BaseParameter.cs" />
     <Compile Include="source\Utils\renderers\Factories\EntityFactory.cs" />
     <Compile Include="source\Utils\renderers\Factories\FormFactory.cs" />
+    <Compile Include="source\Utils\renderers\Factories\SQLFactory.cs" />
     <Compile Include="source\Utils\renderers\Factories\UtilFactory.cs" />
     <Compile Include="source\Utils\renderers\ITemplate.cs" />
     <Compile Include="source\Utils\renderers\ITemplateFactory.cs" />
     <Compile Include="source\Utils\renderers\Parameters\EntityParameter.cs" />
     <Compile Include="source\Utils\renderers\Parameters\FormParameter.cs" />
+    <Compile Include="source\Utils\renderers\Parameters\SQLParameter.cs" />
     <Compile Include="source\Utils\renderers\Templates\BaseFormTemplate.cs" />
     <Compile Include="source\Utils\renderers\Templates\EntityTemplate.cs" />
     <Compile Include="source\Utils\renderers\Templates\FormTemplate.cs" />
     <Compile Include="source\Utils\renderers\Templates\HomeFormTemplate.cs" />
+    <Compile Include="source\Utils\renderers\Templates\SQLTemplate.cs" />
     <Compile Include="source\Utils\renderers\Templates\UtilTemplate.cs" />
     <Compile Include="source\Views\GeneratingForm.cs">
       <SubType>Form</SubType>
@@ -159,7 +162,6 @@
     <Compile Include="source\Views\template-forms\BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="source\Views\template-forms\Class.cs" />
     <Compile Include="source\Views\template-forms\EditForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,7 +174,6 @@
     <Compile Include="source\Views\template-forms\HomeForm.Designer.cs">
       <DependentUpon>HomeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="source\Views\template-forms\Student.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -221,6 +222,9 @@
     <None Include="source\Controllers\.gitkeep" />
     <None Include="source\Poco\.gitkeep" />
     <Content Include="source\Templates\BaseForm\Constructor.txt" />
+    <Content Include="source\Templates\HomeForm\GetData.txt" />
+    <Content Include="source\Templates\HomeForm\GetDataCase.txt" />
+    <Content Include="source\Templates\SepORM\SQLServerDatabase.txt" />
     <Content Include="source\Templates\Utils\DataUtils.txt" />
     <Content Include="source\Templates\HomeForm\HomeForm.Designer.txt" />
   </ItemGroup>

@@ -17,8 +17,8 @@ namespace SEPFramework.source.Views.template_forms
     {
         private Font defaultFont = new Font("Microsoft Sans Serif", 11);
         private bool defaultAutoSize = true;
-        public List<Student> list_student = new List<Student>();
-        public List<Class> list_class = new List<Class>();
+        //public List<Student> list_student = new List<Student>();
+        //public List<Class> list_class = new List<Class>();
         public HomeForm()
         {
             InitializeComponent();
@@ -28,30 +28,24 @@ namespace SEPFramework.source.Views.template_forms
 
         private void LoadData()
         {
-            //Call Get all data for each Entity
-            list_student.Add(new Student("1", "Nhan", "181201"));
-            list_student.Add(new Student("2", "Long", "181202"));
-            list_student.Add(new Student("3", "Quan", "181203"));
-            list_class.Add(new Class("1", 12, "A"));
-            list_class.Add(new Class("2", 23, "B"));
         }
 
         private void GenerateButtons()
         {
-            //Student
-            Button bStudent = new Button();
-            bStudent.Text = "Student";
-            bStudent.Click += openBaseForm;
-            bStudent.AutoSize = defaultAutoSize;
-            bStudent.Font = defaultFont;
-            flpButtons.Controls.Add(bStudent);
-            //Class
-            Button bClass = new Button();
-            bClass.Text = "Class";
-            bClass.Click += openBaseForm;
-            bClass.AutoSize = true;
-            bClass.Font = new Font("Microsoft Sans Serif", 11);
-            flpButtons.Controls.Add(bClass);
+            ////Student
+            //Button bStudent = new Button();
+            //bStudent.Text = "Student";
+            //bStudent.Click += openBaseForm;
+            //bStudent.AutoSize = defaultAutoSize;
+            //bStudent.Font = defaultFont;
+            //flpButtons.Controls.Add(bStudent);
+            ////Class
+            //Button bClass = new Button();
+            //bClass.Text = "Class";
+            //bClass.Click += openBaseForm;
+            //bClass.AutoSize = true;
+            //bClass.Font = new Font("Microsoft Sans Serif", 11);
+            //flpButtons.Controls.Add(bClass);
         }
 
         public void RefeshData(string type)
@@ -82,12 +76,12 @@ namespace SEPFramework.source.Views.template_forms
             Form baseForm = null;
             switch (b.Text)
             {
-                case "Student":
-                    baseForm = new BaseForm(this, typeof(Student).Name, list_student);
-                    break;
-                case "Class":
-                    baseForm = new BaseForm(this, typeof(Class).Name, list_class);
-                    break;
+                //case "Student":
+                //    baseForm = new BaseForm(this, typeof(Student).Name, list_student);
+                //    break;
+                //case "Class":
+                //    baseForm = new BaseForm(this, typeof(Class).Name, list_class);
+                //    break;
             }
             if (baseForm != null)
                 baseForm.Show();

@@ -14,6 +14,7 @@ namespace {{ namespacestring }}
     {
         private Font defaultFont = new Font("Microsoft Sans Serif", 11);
         private bool defaultAutoSize = true;
+        private string CONNECTION_STRING = "{{ connectionstring }}";
 {{ listentity }}
         public HomeForm()
         {
@@ -24,7 +25,9 @@ namespace {{ namespacestring }}
 
         private void LoadData()
         {
-
+            SQLDatabase db = new SQLDatabase(CONNECTION_STRING);
+            db.Open();
+{{ getdatas }}
         }
 
         private void GenerateButtons()
@@ -34,23 +37,11 @@ namespace {{ namespacestring }}
 
         public void RefeshData(string type)
         {
-            return;
-            string CONNECTION_STRING = "Data Source=\"localhost, 1433\";" +
-            "Initial Catalog=StudentManagement;User ID=sa;" +
-            "Password=DesignPattern@2022;Connect Timeout=30;" +
-            "Encrypt=False;TrustServerCertificate=False" +
-            ";ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-            DataProvider dataProvider = new DataProvider(CONNECTION_STRING);
-            IDatabase sqlDB = new SQLDatabase(CONNECTION_STRING);
-            sqlDB.Open();
+            SQLDatabase db = new SQLDatabase(CONNECTION_STRING);
+            db.Open();
             switch (type)
             {
-                case "Student":
-                    //list_student = sqlDB.GetAll<Student>("THT01");
-                    break;
-                case "Class":
-                    //list_class = sqlDB.GetAll<Class>("THT01");
-                    break;
+{{ getdatacases }}
             }
         }
 
