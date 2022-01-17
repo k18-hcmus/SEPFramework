@@ -13,14 +13,19 @@ namespace SEPFramework.source.views
 {
     public partial class Home : Form
     {
-        public Member member;
+        public Membership member;
         private string username;
         private SignIn signIn;
         public Home(SignIn signIn)
         {
             InitializeComponent();
             this.signIn = signIn;
-            member = new Member();
+            string CONNECTION_STRING = "Data Source=\"localhost, 1433\";" +
+                            "Initial Catalog=StudentManagement;User ID=sa;" +
+                            "Password=DesignPattern@2022;Connect Timeout=30;" +
+                            "Encrypt=False;TrustServerCertificate=False" +
+                            ";ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            member = new Membership(CONNECTION_STRING);
             this.username = signIn.getUsername();
         }
 

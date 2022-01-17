@@ -13,12 +13,17 @@ namespace SEPFramework.source.views
 {
     public partial class Register : Form
     {
-        public Member member;
+        public Membership member;
         private SignIn signIn;
         public Register(SignIn signIn)
         {
             InitializeComponent();
-            member = new Member();
+            string CONNECTION_STRING = "Data Source=\"localhost, 1433\";" +
+                "Initial Catalog=StudentManagement;User ID=sa;" +
+                "Password=DesignPattern@2022;Connect Timeout=30;" +
+                "Encrypt=False;TrustServerCertificate=False" +
+                ";ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            member = new Membership(CONNECTION_STRING);
             this.signIn = signIn;
         }
         private void setNotifyClear()
