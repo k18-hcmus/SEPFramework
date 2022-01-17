@@ -11,6 +11,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SEPFramework.source.Utils.membership;
+using SEPFramework.source.Controllers;
 
 namespace SEPFramework.source.views.template_forms
 {
@@ -49,7 +51,7 @@ namespace SEPFramework.source.views.template_forms
             //}
 
             IDatabase sqlDB = new SQLDatabase(CONNECTION_STRING);
-            sqlDB.Open();
+            //sqlDB.Open();
 
             //// Demo Get
             //Mon_Hoc monhoc = sqlDB.GetByID<Mon_Hoc>("THT01");
@@ -66,18 +68,20 @@ namespace SEPFramework.source.views.template_forms
             //Console.WriteLine("New 1: " + monhocX.MaMH + " " + monhocX.Ma_Khoa + " " + monhocX.TenMH);
 
             //// Demo Insert
-            //monhoc2.MaMH = "THT003";
+            //Mon_Hoc monhoc2 = new Mon_Hoc();
+
             //bool x = sqlDB.Insert<Mon_Hoc>(monhoc2);
 
-            //Mon_Hoc monhocY = sqlDB.GetByID<Mon_Hoc>("THT003");
+            //Mon_Hoc monhocY = sqlDB.GetByID<Mon_Hoc>("THT004");
             //Console.WriteLine("New inserted: " + monhocY.MaMH + " " + monhocY.Ma_Khoa + " " + monhocY.TenMH);
 
             //// Demo Get List Normal
-            //List<Mon_Hoc> subjects = sqlDB.GetList<Mon_Hoc>();
-            //foreach (Mon_Hoc subject in subjects)
-            //{
-            //    Console.WriteLine(subject.MaMH + " " + subject.Ma_Khoa + " " + subject.TenMH);
-            //}
+            List<Mon_Hoc> subjects = sqlDB.GetList<Mon_Hoc>();
+            Console.WriteLine("Count:"+ subjects.Count);
+            foreach (Mon_Hoc subject in subjects)
+            {
+                Console.WriteLine(subject.MaMH + " " + subject.Ma_Khoa + " " + subject.TenMH);
+            }
             //// Demo Get List With Conditions
             //List<Mon_Hoc> conditionSubs = sqlDB.GetList<Mon_Hoc>(string.Format("MaMH = '{0}'", "THT02"));
             //foreach (Mon_Hoc subject in conditionSubs)
@@ -86,8 +90,33 @@ namespace SEPFramework.source.views.template_forms
             //}
 
             // Demo Get With Conditions
-            Mon_Hoc monhoc = sqlDB.Get<Mon_Hoc>("SELECT * FROM Mon_Hoc WHERE MaMH = 'THT02'");
-            Console.WriteLine("Get With Condition " + monhoc.MaMH + " " + monhoc.Ma_Khoa + " " + monhoc.TenMH);
+            //Mon_Hoc monhoc = sqlDB.Get<Mon_Hoc>("SELECT * FROM Mon_Hoc WHERE MaMH = 'THT02'");
+            //Console.WriteLine("Get With Condition " + monhoc.MaMH + " " + monhoc.Ma_Khoa + " " + monhoc.TenMH);
+
+            // ====================================================================================================================//
+
+            string username = "nguyenchan";
+            string password = "12345";
+            //Members m1 = new Members();
+            //m1.Username = username;
+            //m1.Password = Crypto.Encrypt(password);
+            //m1.isLogged = true;
+            //m1.MemberId = "1";
+            //bool ok = sqlDB.Insert<Members>(m1);
+            //var auth = string.Format("SELECT * FROM Members WHERE Username = '{0}'", username);
+            //Members mem2 = sqlDB.Get<Members>(auth);
+
+            //Members m2 = new Members();
+            //m2.Username = mem2.Username;
+            //m2.Password = Crypto.Encrypt(mem2.Password);
+            //m2.isLogged = false;
+            //sqlDB.Update<Members>(m1,m2);
+            //if(m2 != null)
+            //{
+            //    Members mem3 = sqlDB.Get<Members>(auth);
+            //    Console.WriteLine("New Members is " + mem3.Username + " " + mem3.Password + " " + mem3.isLogged);
+
+            //}
 
 
         }

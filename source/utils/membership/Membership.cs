@@ -3,34 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SEPFramework.source.Controllers;
 
 namespace SEPFramework.source.Utils.membership
 {
-    public class Member
+    public class Membership
     {
-
-        //public member(string cnnstring)
-        //{
-        //    controller = new handlecontroller(cnnstring);
-        //    controller.createsessiontable();
-        //}
-        public Member()
+        private static handleController controller;
+        public Membership(string cnnstring)
         {
-
+            controller = new handleController(cnnstring);
         }
         public bool Login(string username, string password)
         {
-            return true;
+            if (controller.Login(username,password))
+                return true;
+            return false;
         }
 
         public bool Register(string username, string password)
         {
-            return true;
+            if (controller.Register(username, password))
+                return true;
+            return false;
         }
 
         public bool Logout(string username)
         {
-            return true;
+            if(controller.Logout(username))
+                return true;
+            return false;
         }
     }
 }
