@@ -102,13 +102,26 @@
     <Compile Include="source\SQLSep\Entities\PrimaryKey.cs" />
     <Compile Include="source\SQLSep\SqlBuilder\SqlBuilder.cs" />
     <Compile Include="source\SQLSep\SqlQuery\QueryType.cs" />
+    <Compile Include="source\Utils\DataUtils.cs" />
     <Compile Include="source\Utils\FileUtils.cs" />
     <Compile Include="source\Utils\membership\Crypto.cs" />
     <Compile Include="source\Utils\membership\Membership.cs" />
-    <Compile Include="source\Utils\renderers\EntityTemplate.cs" />
-    <Compile Include="source\Utils\renderers\FileTemplate.cs" />
-    <Compile Include="source\Utils\renderers\FormTemplate.cs" />
-    <Compile Include="source\Utils\renderers\TemplateFactory.cs" />
+    <Compile Include="source\Utils\renderers\BaseParameter.cs" />
+    <Compile Include="source\Utils\renderers\Factories\EntityFactory.cs" />
+    <Compile Include="source\Utils\renderers\Factories\FormFactory.cs" />
+    <Compile Include="source\Utils\renderers\Factories\SQLFactory.cs" />
+    <Compile Include="source\Utils\renderers\Factories\UtilFactory.cs" />
+    <Compile Include="source\Utils\renderers\ITemplate.cs" />
+    <Compile Include="source\Utils\renderers\ITemplateFactory.cs" />
+    <Compile Include="source\Utils\renderers\Parameters\EntityParameter.cs" />
+    <Compile Include="source\Utils\renderers\Parameters\FormParameter.cs" />
+    <Compile Include="source\Utils\renderers\Parameters\SQLParameter.cs" />
+    <Compile Include="source\Utils\renderers\Templates\BaseFormTemplate.cs" />
+    <Compile Include="source\Utils\renderers\Templates\EntityTemplate.cs" />
+    <Compile Include="source\Utils\renderers\Templates\FormTemplate.cs" />
+    <Compile Include="source\Utils\renderers\Templates\HomeFormTemplate.cs" />
+    <Compile Include="source\Utils\renderers\Templates\SQLTemplate.cs" />
+    <Compile Include="source\Utils\renderers\Templates\UtilTemplate.cs" />
     <Compile Include="source\Views\GeneratingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +170,12 @@
     <Compile Include="source\Views\template-forms\EditForm.Designer.cs">
       <DependentUpon>EditForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="source\Views\template-forms\HomeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="source\Views\template-forms\HomeForm.Designer.cs">
+      <DependentUpon>HomeForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -166,6 +185,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="source\Views\GeneratingForm.resx">
+      <DependentUpon>GeneratingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="source\Views\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
@@ -174,6 +196,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="source\Views\SignIn.resx">
       <DependentUpon>SignIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="source\Views\template-forms\BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="source\Views\template-forms\HomeForm.resx">
+      <DependentUpon>HomeForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>
@@ -198,6 +226,12 @@
     </Compile>
     <None Include="source\Controllers\.gitkeep" />
     <None Include="source\Poco\.gitkeep" />
+    <Content Include="source\Templates\BaseForm\Constructor.txt" />
+    <Content Include="source\Templates\HomeForm\GetData.txt" />
+    <Content Include="source\Templates\HomeForm\GetDataCase.txt" />
+    <Content Include="source\Templates\SepORM\SQLServerDatabase.txt" />
+    <Content Include="source\Templates\Utils\DataUtils.txt" />
+    <Content Include="source\Templates\HomeForm\HomeForm.Designer.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -223,12 +257,16 @@
     <Content Include="source\Templates\ActionForm.txt" />
     <Content Include="source\Templates\AddForm.Designer.txt" />
     <Content Include="source\Templates\AddForm.txt" />
-    <Content Include="source\Templates\BaseForm.Designer.txt" />
-    <Content Include="source\Templates\BaseForm.txt" />
+    <Content Include="source\Templates\BaseForm\BaseForm.Designer.txt" />
+    <Content Include="source\Templates\BaseForm\BaseForm.txt" />
     <Content Include="source\Templates\EditForm.Designer.txt" />
     <Content Include="source\Templates\EditForm.txt" />
     <Content Include="source\Templates\EntityTemplate.txt" />
     <Content Include="source\Templates\FieldTemplate.txt" />
+    <Content Include="source\Templates\HomeForm\HomeForm.txt" />
+    <Content Include="source\Templates\HomeForm\ListEntity.txt" />
+    <Content Include="source\Templates\HomeForm\OpenFormButton.txt" />
+    <Content Include="source\Templates\HomeForm\OpenFormCase.txt" />
     <Content Include="source\Views\template-forms\ActionForm.Designer.txt" />
     <Content Include="source\Views\template-forms\ActionForm.txt" />
     <Content Include="source\Views\template-forms\AddForm.Designer.txt" />

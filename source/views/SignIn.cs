@@ -78,7 +78,6 @@ namespace SEPFramework.source.views
                     Mes.Visible = true;
                 }
             }
-
         }
 
         private void register_btn_Click(object sender, EventArgs e)

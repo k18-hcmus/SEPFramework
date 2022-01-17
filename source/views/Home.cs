@@ -43,5 +43,9 @@ namespace SEPFramework.source.views
             GeneratingForm form = new GeneratingForm();
             form.Show();
         }
+
+        private void generateButton()
+        {
+        }
     }
 }

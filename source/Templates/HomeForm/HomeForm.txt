@@ -1,0 +1,60 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace {{ namespacestring }}
+{
+    public partial class HomeForm : Form
+    {
+        private Font defaultFont = new Font("Microsoft Sans Serif", 11);
+        private bool defaultAutoSize = true;
+        private string CONNECTION_STRING = "{{ connectionstring }}";
+{{ listentity }}
+        public HomeForm()
+        {
+            InitializeComponent();
+            LoadData();
+            GenerateButtons();
+        }
+
+        private void LoadData()
+        {
+            SQLDatabase db = new SQLDatabase(CONNECTION_STRING);
+            db.Open();
+{{ getdatas }}
+        }
+
+        private void GenerateButtons()
+        {
+{{ openformbuttons }}
+        }
+
+        public void RefeshData(string type)
+        {
+            SQLDatabase db = new SQLDatabase(CONNECTION_STRING);
+            db.Open();
+            switch (type)
+            {
+{{ getdatacases }}
+            }
+        }
+
+        private void openBaseForm(object sender, EventArgs e)
+        {
+            Button b = sender as Button;
+            Form baseForm = null;
+            switch (b.Text)
+            {
+{{ openformcases }}
+            }
+            if (baseForm != null)
+                baseForm.Show();
+        }
+    }
+}

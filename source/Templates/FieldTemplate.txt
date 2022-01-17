@@ -1,1 +1,1 @@
-\tpublic {{ type }} {{ name }} {get; set;}\n
+		public {{ type }} {{ name }} {get; set;}
