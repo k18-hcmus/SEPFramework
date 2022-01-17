@@ -89,6 +89,7 @@
             // 
             this.password_textbox.Location = new System.Drawing.Point(52, 94);
             this.password_textbox.Name = "password_textbox";
+            this.password_textbox.PasswordChar = '*';
             this.password_textbox.Size = new System.Drawing.Size(188, 22);
             this.password_textbox.TabIndex = 5;
             // 
@@ -96,6 +97,7 @@
             // 
             this.confirm_textbox.Location = new System.Drawing.Point(52, 150);
             this.confirm_textbox.Name = "confirm_textbox";
+            this.confirm_textbox.PasswordChar = '*';
             this.confirm_textbox.Size = new System.Drawing.Size(188, 22);
             this.confirm_textbox.TabIndex = 6;
             // 

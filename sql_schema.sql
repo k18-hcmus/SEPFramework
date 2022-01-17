@@ -94,3 +94,11 @@ create table Giang_Khoa
 	foreign key(MaMH) references Mon_Hoc(MaMH)
 )
 go
+create table Members
+(
+	MemberId varchar(10) primary key,
+	Username varchar(30) not null,
+	Password varchar(64) not null,
+	isLogged BIT,
+)
+go

@@ -18,6 +18,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SEPFramework.source.Utils.membership;
+using SEPFramework.source.Controllers;
 
 namespace SEPFramework.source.views.template_forms
 {
