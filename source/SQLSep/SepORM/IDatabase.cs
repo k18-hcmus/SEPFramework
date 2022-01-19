@@ -8,9 +8,6 @@ namespace SEPFramework.source.SQLSep.SepORM
 {
     public interface IDatabase
     {
-        bool Open();
-        bool Close();
-        void CreateTableIfNotExist();
         List<T> GetList<T>(string whereConditions = "") where T : class,new();
         T Get<T>(string sql) where T : class, new();
         T GetByID<T>(string ID) where T : class, new();

@@ -1,4 +1,5 @@
 ﻿using Scriban;
+using SEPFramework.source.SQLSep.SepORM;
 using SEPFramework.source.Utils.Renderers;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SEPFramework.source.Utils.renderers.Templates
+namespace SEPFramework.source.Utils.Renderers.Templates
 {
     public class SQLTemplate : ITemplate
     {
@@ -19,8 +20,8 @@ namespace SEPFramework.source.Utils.renderers.Templates
         }
         public void Render(string path, string filename)
         {
-            string designerData = template.Render(new { namespacestring = this.namespaceString });
-            FileUtils.GetInstance().CreateFile(path + "\\" + filename + ".cs", designerData);
+            string designerData = template.Render(new { namespacestring = this.namespaceString, connectionstring = DataProvider.GetInstance().GetConnectionString() });
+            FileUtils.CreateFile(path + "\\" + filename + ".cs", designerData);
         }
     }
 }

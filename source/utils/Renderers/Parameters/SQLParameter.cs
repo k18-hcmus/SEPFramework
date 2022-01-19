@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SEPFramework.source.Utils.renderers.Parameters
+namespace SEPFramework.source.Utils.Renderers.Parameters
 {
     public class SQLParameter : BaseParameter
     {

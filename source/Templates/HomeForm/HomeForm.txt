@@ -15,7 +15,8 @@ namespace {{ namespacestring }}
         private Font defaultFont = new Font("Microsoft Sans Serif", 11);
         private bool defaultAutoSize = true;
         private string CONNECTION_STRING = "{{ connectionstring }}";
-{{ listentity }}
+{{for name in entitynames }}
+        public List<{{ name }}> list{{ name }} = new List<{{ name }}>();{{end}}
         public HomeForm()
         {
             InitializeComponent();
@@ -26,13 +27,20 @@ namespace {{ namespacestring }}
         private void LoadData()
         {
             SQLDatabase db = new SQLDatabase(CONNECTION_STRING);
-            db.Open();
-{{ getdatas }}
+            db.Open();{{for name in entitynames }}
+            list{{ name }} = db.GetList<{{ name }}>();{{end}}
         }
 
         private void GenerateButtons()
         {
-{{ openformbuttons }}
+{{for name in entitynames }}
+            //{{ name }}
+			Button b{{ name }} = new Button();
+			b{{ name }}.Text = "{{ name }}";
+			b{{ name }}.Click += openBaseForm;
+			b{{ name }}.AutoSize = defaultAutoSize;
+			b{{ name }}.Font = defaultFont;
+			flpButtons.Controls.Add(b{{ name }});{{end}}
         }
 
         public void RefeshData(string type)
@@ -41,7 +49,10 @@ namespace {{ namespacestring }}
             db.Open();
             switch (type)
             {
-{{ getdatacases }}
+{{for name in entitynames }}
+                case "{{ name }}":
+                    list{{ name }} = db.GetList<{{ name }}>();
+                    break;{{end}}
             }
         }
 
@@ -51,7 +62,10 @@ namespace {{ namespacestring }}
             Form baseForm = null;
             switch (b.Text)
             {
-{{ openformcases }}
+{{for name in entitynames }}
+                case "{{ name }}":
+                    baseForm = new BaseForm(this, typeof({{ name }}).Name, list{{ name }});
+                    break;{{end}}
             }
             if (baseForm != null)
                 baseForm.Show();

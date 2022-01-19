@@ -15,8 +15,7 @@ namespace SEPFramework.source.Utils.Renderers.Factories
         {
             EntityParameter entityParam = parameter as EntityParameter;
             return new EntityTemplate(
-                        Template.Parse(System.IO.File.ReadAllText("..\\..\\source\\Templates\\EntityTemplate.txt")),
-                        Template.Parse(System.IO.File.ReadAllText("..\\..\\source\\Templates\\FieldTemplate.txt")),
+                        Template.Parse(System.IO.File.ReadAllText("..\\..\\source\\Templates\\Entity\\EntityTemplate.txt")),
                         entityParam.Data,
                         entityParam.NamespaceString);
         }

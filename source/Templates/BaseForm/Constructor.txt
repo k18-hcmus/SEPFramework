@@ -1,8 +1,0 @@
-﻿    public BaseForm(HomeForm homeForm, string dataType, List<{{ name }}> data)
-    {
-        InitializeComponent();
-        this.homeForm = homeForm;
-        this.dataType = dataType;
-        this.data = DataUtils.ToDataTable<{{ name }}>(data);
-        InitData();
-    }

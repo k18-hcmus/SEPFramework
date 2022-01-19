@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using SEPFramework.source.Utils.membership;
-using SEPFramework.source.Engines;
 using SEPFramework.source.SQLSep.Entities;
 using SEPFramework.source.SQLSep.SepORM;
 using source.Poco;
@@ -15,15 +14,10 @@ namespace SEPFramework.source.Controllers
     public class handleController
     {
         private static IDatabase hdl_model; 
-        public handleController(string url)
+        public handleController()
         {
-            string CONNECTION_STRING = "Data Source=\"localhost, 1433\";" +
-               "Initial Catalog=StudentManagement;User ID=sa;" +
-               "Password=DesignPattern@2022;Connect Timeout=30;" +
-               "Encrypt=False;TrustServerCertificate=False" +
-               ";ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-           hdl_model = new SQLDatabase(CONNECTION_STRING);
-           hdl_model.Open();
+            string connectiongString = DataProvider.GetInstance().GetConnectionString();
+            hdl_model = SQLDatabase.GetInstance(connectiongString);
         }
         public bool Login(string username, string password)
         {

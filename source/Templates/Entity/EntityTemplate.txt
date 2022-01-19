@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data;
+
+namespace {{ namespacestring }}
+{
+    public class {{ name }}
+    {
+{{ columns }}
+        public {{ name }}({{ paramlist }}) {
+            {{for param in parameters }} 
+            this.{{ param }} = {{ param }};{{end}}
+        }
+        public {{ name }}(DataRow row) {
+{{ datarowconstructbody }}
+        }
+    }
+}

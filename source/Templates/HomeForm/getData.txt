@@ -1,1 +1,0 @@
-﻿			list{{ name }} = db.GetList<{{ name }}>();

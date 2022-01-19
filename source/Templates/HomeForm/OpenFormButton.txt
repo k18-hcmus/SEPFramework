@@ -1,7 +1,0 @@
-﻿			//{{ name }}
-			Button b{{ name }} = new Button();
-			b{{ name }}.Text = "{{ name }}";
-			b{{ name }}.Click += openBaseForm;
-			b{{ name }}.AutoSize = defaultAutoSize;
-			b{{ name }}.Font = defaultFont;
-			flpButtons.Controls.Add(b{{ name }});

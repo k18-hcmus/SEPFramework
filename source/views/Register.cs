@@ -18,12 +18,7 @@ namespace SEPFramework.source.views
         public Register(SignIn signIn)
         {
             InitializeComponent();
-            string CONNECTION_STRING = "Data Source=\"localhost, 1433\";" +
-                "Initial Catalog=StudentManagement;User ID=sa;" +
-                "Password=DesignPattern@2022;Connect Timeout=30;" +
-                "Encrypt=False;TrustServerCertificate=False" +
-                ";ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-            member = new Membership(CONNECTION_STRING);
+            member = new Membership();
             this.signIn = signIn;
         }
         private void setNotifyClear()
