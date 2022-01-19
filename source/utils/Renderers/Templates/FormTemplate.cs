@@ -24,9 +24,9 @@ namespace SEPFramework.source.Utils.Renderers.Templates
         public void Render(string path, string filename)
         {
             string formData = RenderForm();
-            FileUtils.GetInstance().CreateFile(path + "\\" + filename + ".cs", formData);
+            FileUtils.CreateFile(path + "\\" + filename + ".cs", formData);
             string designerData = RenderDesigner();
-            FileUtils.GetInstance().CreateFile(path + "\\" + filename + ".Designer.cs", designerData);
+            FileUtils.CreateFile(path + "\\" + filename + ".Designer.cs", designerData);
         }
         public virtual string RenderForm()
         {

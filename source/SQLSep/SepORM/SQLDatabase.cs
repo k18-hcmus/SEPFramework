@@ -15,8 +15,8 @@ namespace SEPFramework.source.SQLSep.SepORM
         public string ConnectionString { get; set; }
         public string DatabaseName { get; set; }
         public string DatabaseType { get; set; }
-
-        public SQLDatabase(string connectionString)
+        private static SQLDatabase instance = null;
+        private SQLDatabase(string connectionString)
         {
             var connStringBuilder = new SqlConnectionStringBuilder(connectionString);
             this.DatabaseName = connStringBuilder.InitialCatalog;
@@ -24,8 +24,16 @@ namespace SEPFramework.source.SQLSep.SepORM
             this.connection = new SqlConnection(this.ConnectionString);
             this.isClosedConnection = true;
         }
-
-        public bool Open()
+        public static SQLDatabase GetInstance(string connString = "")
+        {
+            if (instance == null && connString != "")
+            {
+                instance = new SQLDatabase(connString);
+                instance.Open();
+            }
+            return instance;
+        }
+        private bool Open()
         {
             if (this.connection == null) return false;
             connection.ConnectionString = this.ConnectionString;
@@ -36,15 +44,6 @@ namespace SEPFramework.source.SQLSep.SepORM
                 return true;
             }
             return false;
-        }
-
-        public bool Close()
-        {
-            throw new NotImplementedException();
-        }
-        public void CreateTableIfNotExist()
-        {
-            throw new NotImplementedException();
         }
         public List<T> GetList<T>(string whereConditions = "") where T : class, new()
         {

@@ -16,7 +16,15 @@ namespace {{ namespacestring }}
         public DataTable data = new DataTable();
         private HomeForm homeForm = null;
         private string dataType = "";
-{{ constructors }}
+{{ for name in entitynames}}
+        public BaseForm(HomeForm homeForm, string dataType, List<{{ name }}> data)
+        {
+            InitializeComponent();
+            this.homeForm = homeForm;
+            this.dataType = dataType;
+            this.data = DataUtils.ToDataTable<{{ name }}>(data);
+            InitData();
+        }{{end}}
 
         private void InitData()
         {
@@ -51,6 +59,7 @@ namespace {{ namespacestring }}
             {
                 data.Rows.Remove(data.Rows[selectedRow.Index]);
             }
+
         }
 
         private void BaseForm_FormClosed(object sender, FormClosedEventArgs e)

@@ -1,3 +1,0 @@
-﻿                case "{{ name }}":
-                    list{{ name }} = db.GetList<{{ name }}>();
-                    break;

@@ -1,3 +1,0 @@
-﻿                case "{{ name }}":
-                    baseForm = new BaseForm(this, typeof({{ name }}).Name, list{{ name }});
-                    break;

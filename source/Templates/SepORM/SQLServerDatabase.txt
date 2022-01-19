@@ -12,23 +12,30 @@ namespace {{ namespacestring }}
     {
         private SqlConnection connection;
         private bool isClosedConnection;
-        public string ConnectionString { get; set; }
+        public string connectionString = {{ connectionstring }}
         public string DatabaseName { get; set; }
         public string DatabaseType { get; set; }
-
-        public SQLDatabase(string connectionString)
+        private static SQLDatabase instance = null;
+        private SQLDatabase()
         {
-            var connStringBuilder = new SqlConnectionStringBuilder(connectionString);
+            var connStringBuilder = new SqlconnectionStringBuilder(connectionString);
             this.DatabaseName = connStringBuilder.InitialCatalog;
-            this.ConnectionString = connStringBuilder.ConnectionString;
-            this.connection = new SqlConnection(this.ConnectionString);
+            this.connection = new SqlConnection(this.connectionString);
             this.isClosedConnection = true;
         }
-
-        public bool Open()
+        public static SQLDatabase GetInstance(string connString = "")
+        {
+            if (instance == null && connString != "")
+            {
+                instance = new SQLDatabase(connString);
+                instance.Open();
+            }
+            return instance;
+        }
+        private bool Open()
         {
             if (this.connection == null) return false;
-            connection.ConnectionString = this.ConnectionString;
+            connection.connectionString = this.connectionString;
             if (connection.State != ConnectionState.Open)
             {
                 connection.Open();
@@ -36,15 +43,6 @@ namespace {{ namespacestring }}
                 return true;
             }
             return false;
-        }
-
-        public bool Close()
-        {
-            throw new NotImplementedException();
-        }
-        public void CreateTableIfNotExist()
-        {
-            throw new NotImplementedException();
         }
         public List<T> GetList<T>(string whereConditions = "") where T : class, new()
         {

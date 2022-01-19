@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="SEPFramework.Program" Collapsed="true">
+    <Position X="7.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SEPFramework.Properties.Resources" Collapsed="true">
+    <Position X="11.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SEPFramework.Properties.Settings" Collapsed="true">
+    <Position X="13" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAACAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SEPFramework.source.Controllers.handleController" Collapsed="true">
+    <Position X="14.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAIAIIAAABAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>source\Controllers\handleController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="source.Poco.Members" Collapsed="true">
+    <Position X="13" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAQAAAQAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>source\Poco\Members.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SEPFramework.source.SQLSep.Entities.ColumnMapper" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAFAAAAAgAAAAEAAAA=</HashCode>
+      <FileName>source\SQLSep\Entities\ColumnMapper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SEPFramework.source.SQLSep.Entities.ForeignKey" Collapsed="true">
+    <Position X="11.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>source\SQLSep\Entities\ForeignKey.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SEPFramework.source.SQLSep.Entities.PrimaryKey" Collapsed="true">
+    <Position X="16.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>source\SQLSep\Entities\PrimaryKey.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SEPFramework.source.SQLSep.Entities.TableMapper" Collapsed="true">
+    <Position X="13" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAEAAAACACAAAABAAA=</HashCode>
+      <FileName>source\SQLSep\Entities\TableMapper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SEPFramework.source.SQLSep.SepORM.DataProvider" Collapsed="true">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQIABAAABAAAAABAEBAAkBBCBAAAAAAIIAAgAAAAA=</HashCode>
+      <FileName>source\SQLSep\SepORM\DataProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SEPFramework.source.SQLSep.SepORM.SQLDatabase" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYCAEAAAAAAIABAAAABAAAABAFAAAAAACAAgAIBAAI=</HashCode>
+      <FileName>source\SQLSep\SepORM\SQLDatabase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SEPFramework.source.SQLSep.SepORM.SQLDataTypeMapping" Collapsed="true">
+    <Position X="7.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>source\SQLSep\SepORM\SQLDataTypeMapping.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SEPFramework.source.Utils.DataUtils" Collapsed="true">
+    <Position X="14.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>source\Utils\DataUtils.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SEPFramework.source.Utils.FileUtils" Collapsed="true">
+    <Position X="9.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>source\Utils\FileUtils.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SEPFramework.source.Utils.IoCContainer.InjectionConstructor" Collapsed="true">
+    <Position X="9.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAIAAAAAAAAAAAAAAAACAAABAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>source\Utils\IoCContainer\InjectionConstructor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SEPFramework.source.Utils.IoCContainer.IoCImpl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAACIAAAAAAAAAAQAAABAAAAAAIEAAAAAAAg=</HashCode>
+      <FileName>source\Utils\IoCContainer\IoCImpl.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SEPFramework.source.Utils.membership.Crypto" Collapsed="true">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAgAAgAAAASAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>source\Utils\membership\Crypto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SEPFramework.source.Utils.membership.Membership" Collapsed="true">
+    <Position X="14.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAAAIAAAABAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>source\Utils\membership\Membership.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SEPFramework.source.Utils.Renderers.BaseParameter" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAACAAAAAA=</HashCode>
+      <FileName>source\Utils\renderers\BaseParameter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SEPFramework.source.Utils.Renderers.Factories.EntityFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>source\Utils\renderers\Factories\EntityFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SEPFramework.source.Utils.Renderers.Factories.FormFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>source\Utils\renderers\Factories\FormFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SEPFramework.source.Utils.Renderers.Factories.SQLFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>source\Utils\renderers\Factories\SQLFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SEPFramework.source.Utils.Renderers.Factories.UtilFactory" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>source\Utils\renderers\Factories\UtilFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SEPFramework.source.Utils.Renderers.Parameters.EntityParameter" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAA=</HashCode>
+      <FileName>source\Utils\renderers\Parameters\EntityParameter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SEPFramework.source.Utils.Renderers.Parameters.FormParameter" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAACAAAAAAAAgAAAAAAAAAAAAAABAAACAQAAAAAAA=</HashCode>
+      <FileName>source\Utils\renderers\Parameters\FormParameter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SEPFramework.source.Utils.Renderers.Parameters.SQLParameter" Collapsed="true">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>source\Utils\renderers\Parameters\SQLParameter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SEPFramework.source.Utils.Renderers.Templates.BaseFormTemplate" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>source\Utils\renderers\Templates\BaseFormTemplate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SEPFramework.source.Utils.Renderers.Templates.EntityTemplate" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAICAAAAAACBAQCAAAAAA=</HashCode>
+      <FileName>source\Utils\renderers\Templates\EntityTemplate.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SEPFramework.source.Utils.Renderers.Templates.FormTemplate" Collapsed="true">
+    <Position X="1.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EQAAAAAEAAAAAAAAAAQAAAAAAAAAAAAAABAQCAAAAAA=</HashCode>
+      <FileName>source\Utils\renderers\Templates\FormTemplate.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SEPFramework.source.Utils.Renderers.Templates.HomeFormTemplate" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>source\Utils\renderers\Templates\HomeFormTemplate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SEPFramework.source.Utils.Renderers.Templates.SQLTemplate" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAABAACAAAAAA=</HashCode>
+      <FileName>source\Utils\renderers\Templates\SQLTemplate.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SEPFramework.source.Utils.Renderers.Templates.UtilTemplate" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAABAACAAAAAA=</HashCode>
+      <FileName>source\Utils\renderers\Templates\UtilTemplate.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SEPFramework.source.views.Home" Collapsed="true">
+    <Position X="16.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAEACCAEAAAAAGAAAECAAAAAAAACAAAAAEAAAA=</HashCode>
+      <FileName>source\Views\Home.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SEPFramework.source.views.Register" Collapsed="true">
+    <Position X="9.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AoAAQIAAACAAAAglEBCAAgIHAAAABAAACAAAAQAAAAA=</HashCode>
+      <FileName>source\Views\Register.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SEPFramework.source.views.SignIn" Collapsed="true">
+    <Position X="14.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAEAACAAAAAFEBCAAgIDAAAABAgACEAAAAAAAAA=</HashCode>
+      <FileName>source\Views\SignIn.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SEPFramework.source.Views.InitialForm" Collapsed="true">
+    <Position X="7.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAACgABBgAAACABAADAAAIEAAAAEAAAQAEAAA=</HashCode>
+      <FileName>source\Views\InitialForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="SEPFramework.source.SQLSep.SepORM.IDatabase">
+    <Position X="7.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAAABAAAAAAAAAAAEAAAAAAAAAgAAAAAI=</HashCode>
+      <FileName>source\SQLSep\SepORM\IDatabase.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SEPFramework.source.Utils.IoCContainer.IIoC" Collapsed="true">
+    <Position X="9.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>source\Utils\IoCContainer\IIoC.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SEPFramework.source.Utils.Renderers.ITemplate" Collapsed="true">
+    <Position X="11.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>source\Utils\renderers\ITemplate.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SEPFramework.source.Utils.Renderers.ITemplateFactory" Collapsed="true">
+    <Position X="13" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>source\Utils\renderers\ITemplateFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -28,6 +28,7 @@ namespace {{ namespacestring }}
                 }
             }
             this.data.Rows.Add(data.ToArray());
+            SQLDatabase db = SQLDatabase.GetInstance();
         }
     }
 }

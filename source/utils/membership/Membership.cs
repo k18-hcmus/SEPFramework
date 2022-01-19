@@ -10,9 +10,9 @@ namespace SEPFramework.source.Utils.membership
     public class Membership
     {
         private static handleController controller;
-        public Membership(string cnnstring)
+        public Membership()
         {
-            controller = new handleController(cnnstring);
+            controller = new handleController();
         }
         public bool Login(string username, string password)
         {
