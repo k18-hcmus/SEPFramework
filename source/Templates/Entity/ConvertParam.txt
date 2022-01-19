@@ -1,0 +1,2 @@
+﻿			{{ if isstring }} this.{{ name }} = parameters[{{ index }}];
+			{{ else }} this.{{ name }} = ({{ type }})Convert.ChangeType(parameters[{{ index }}], typeof({{ type }})); {{ end }}

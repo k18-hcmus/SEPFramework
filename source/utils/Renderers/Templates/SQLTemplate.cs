@@ -20,7 +20,7 @@ namespace SEPFramework.source.Utils.Renderers.Templates
         }
         public void Render(string path, string filename)
         {
-            string designerData = template.Render(new { namespacestring = this.namespaceString, connectionstring = DataProvider.GetInstance().GetConnectionString() });
+            string designerData = template.Render(new { namespacestring = this.namespaceString, connectionstring = DataProvider.GetInstance().GetConnectionString().Replace("\"", "\\\"") });
             FileUtils.CreateFile(path + "\\" + filename + ".cs", designerData);
         }
     }

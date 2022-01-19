@@ -14,7 +14,6 @@ namespace {{ namespacestring }}
     {
         private Font defaultFont = new Font("Microsoft Sans Serif", 11);
         private bool defaultAutoSize = true;
-        private string CONNECTION_STRING = "{{ connectionstring }}";
 {{for name in entitynames }}
         public List<{{ name }}> list{{ name }} = new List<{{ name }}>();{{end}}
         public HomeForm()
@@ -26,8 +25,7 @@ namespace {{ namespacestring }}
 
         private void LoadData()
         {
-            SQLDatabase db = new SQLDatabase(CONNECTION_STRING);
-            db.Open();{{for name in entitynames }}
+            SQLDatabase db = SQLDatabase.GetInstance();{{for name in entitynames }}
             list{{ name }} = db.GetList<{{ name }}>();{{end}}
         }
 
@@ -45,8 +43,7 @@ namespace {{ namespacestring }}
 
         public void RefeshData(string type)
         {
-            SQLDatabase db = new SQLDatabase(CONNECTION_STRING);
-            db.Open();
+            SQLDatabase db = SQLDatabase.GetInstance();
             switch (type)
             {
 {{for name in entitynames }}
@@ -64,7 +61,7 @@ namespace {{ namespacestring }}
             {
 {{for name in entitynames }}
                 case "{{ name }}":
-                    baseForm = new BaseForm(this, typeof({{ name }}).Name, list{{ name }});
+                    baseForm = new BaseForm(this, typeof({{ name }}), list{{ name }});
                     break;{{end}}
             }
             if (baseForm != null)

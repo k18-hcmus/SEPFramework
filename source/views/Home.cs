@@ -22,6 +22,10 @@ namespace SEPFramework.source.views
     {
         private string username;
         private SignIn signIn;
+        public Home()
+        {
+            InitializeComponent();
+        }
         public Home(SignIn signIn)
         {
             InitializeComponent();
@@ -46,9 +50,9 @@ namespace SEPFramework.source.views
                 //IoCContainer.RegisterType<DataProvider>(
                 //    new InjectionConstructor().AddParameter<string>(CONNECTION_STRING));
                 //List<TableMapper> tableMappers = IoCContainer.Resolve<DataProvider>().getTables();
-
-                DataProvider provider = DataProvider.GetInstance();
-                List<TableMapper> tableMappers = provider.getTables();
+                DataProvider provider = DataProvider.GetInstance("localhost, 1433", "sa", "DesignPattern@2022");
+                provider.Catalog = "StudentManagement";
+                List <TableMapper> tableMappers = provider.getTables();
                 string rootPath = "SampleSource";
                 string formPath = ".\\SampleSource\\Forms";
                 string entityPath = ".\\SampleSource\\Entities";
@@ -61,7 +65,7 @@ namespace SEPFramework.source.views
                 ITemplateFactory formfactory = new FormFactory();
 
                 ITemplate homeFormTemplate = formfactory.GetTemplate(
-                    new FormParameter(provider.GetConnectionString(), FormParameter.Type.HomeForm,
+                    new FormParameter(FormParameter.Type.HomeForm,
                     namespaceString, tableMappers));
                 ITemplate baseFormTemplate = formfactory.GetTemplate(
                     new FormParameter(FormParameter.Type.BaseForm,

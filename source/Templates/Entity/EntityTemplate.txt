@@ -10,12 +10,9 @@ namespace {{ namespacestring }}
     public class {{ name }}
     {
 {{ columns }}
-        public {{ name }}({{ paramlist }}) {
-            {{for param in parameters }} 
-            this.{{ param }} = {{ param }};{{end}}
-        }
-        public {{ name }}(DataRow row) {
-{{ datarowconstructbody }}
+        public {{ name }}() { }
+        public {{ name }}(List<string> parameters) {
+{{ convertparams }}
         }
     }
 }

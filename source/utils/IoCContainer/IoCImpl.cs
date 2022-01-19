@@ -104,7 +104,6 @@ namespace SEPFramework.source.Utils.IoCContainer
                 object resolvedType = ResolveType(paramInfo.ParameterType);
                 paramList.Add(resolvedType);
             }
-
             return constructor.Invoke(paramList.ToArray());
         }
 

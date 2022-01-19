@@ -1,1 +1,0 @@
-﻿			this.{{ name }} = ({{ type }})row["{{ name }}"];

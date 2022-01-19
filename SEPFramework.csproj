@@ -167,7 +167,7 @@
     </Compile>
     <None Include="source\Controllers\.gitkeep" />
     <None Include="source\Poco\.gitkeep" />
-    <Content Include="source\Templates\Entity\DataRowConstructBody.txt" />
+    <Content Include="source\Templates\Entity\ConvertParam.txt" />
     <Content Include="source\Templates\SepORM\SQLServerDatabase.txt" />
     <Content Include="source\Templates\Utils\DataUtils.txt" />
     <Content Include="source\Templates\HomeForm\HomeForm.Designer.txt" />

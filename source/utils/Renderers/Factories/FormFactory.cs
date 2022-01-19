@@ -48,7 +48,6 @@ namespace SEPFramework.source.Utils.Renderers.Factories
                     break;
                 case FormParameter.Type.HomeForm:
                     fileTemplate = new HomeFormTemplate(
-                        formParam.ConnectionString,
                         Template.Parse(System.IO.File.ReadAllText("..\\..\\source\\Templates\\HomeForm\\HomeForm.txt")),
                         Template.Parse(System.IO.File.ReadAllText("..\\..\\source\\Templates\\HomeForm\\HomeForm.Designer.txt")),
                         formParam.Data,
