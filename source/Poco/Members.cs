@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 namespace source.Poco
 {
     [Table("Members")]
-
     public class Members
     {
         [Key]
