@@ -12,22 +12,22 @@ namespace {{ namespacestring }}
     {
         private SqlConnection connection;
         private bool isClosedConnection;
-        public string connectionString = {{ connectionstring }}
+        public string connectionString = "{{ connectionstring }}";
         public string DatabaseName { get; set; }
         public string DatabaseType { get; set; }
         private static SQLDatabase instance = null;
         private SQLDatabase()
         {
-            var connStringBuilder = new SqlconnectionStringBuilder(connectionString);
+            var connStringBuilder = new SqlConnectionStringBuilder(connectionString);
             this.DatabaseName = connStringBuilder.InitialCatalog;
             this.connection = new SqlConnection(this.connectionString);
             this.isClosedConnection = true;
         }
-        public static SQLDatabase GetInstance(string connString = "")
+        public static SQLDatabase GetInstance()
         {
-            if (instance == null && connString != "")
+            if (instance == null)
             {
-                instance = new SQLDatabase(connString);
+                instance = new SQLDatabase();
                 instance.Open();
             }
             return instance;
@@ -35,7 +35,7 @@ namespace {{ namespacestring }}
         private bool Open()
         {
             if (this.connection == null) return false;
-            connection.connectionString = this.connectionString;
+            connection.ConnectionString = this.connectionString;
             if (connection.State != ConnectionState.Open)
             {
                 connection.Open();

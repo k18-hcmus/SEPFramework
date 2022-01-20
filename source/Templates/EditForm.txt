@@ -7,25 +7,47 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace {{ namespacestring }}
 {
     public partial class EditForm : ActionForm
     {
+        private BaseForm baseForm;
+        private List<string> oldData;
         public EditForm(BaseForm baseForm, Modification modification, int index = -1) : base(baseForm, modification, index)
         {
             InitializeComponent();
+            this.baseForm = baseForm;
             this.Size = new Size(550, 420);
+            oldData = GetData();
         }
 
         protected override void execute()
         {
-            List<string> data = new List<string>();
             for (int i = 0; i < this.data.Columns.Count; i += 1)
             {
                 this.data.Rows[this.index][i] = pnData.Controls[i].Controls[1].Text.ToString();
             }
             baseForm.dgvData.DataSource = this.data;
+            List<string> newData = GetData();
+            SQLDatabase db = SQLDatabase.GetInstance();
+            ConstructorInfo constructor = baseForm.DataType.GetConstructors().First(con => con.GetParameters().Length == 1);
+            object oldObject = constructor.Invoke(new object[] { oldData });
+            object newObject = constructor.Invoke(new object[] { newData });
+            MethodInfo genericUpdate = db.GetType().GetMethod("Update");
+            MethodInfo typeFunction = genericUpdate.MakeGenericMethod(baseForm.DataType);
+            typeFunction.Invoke(db, new object[] { oldObject, newObject });
+        }
+
+        private List<string> GetData()
+        {
+            List<string> data = new List<string>();
+            for (int i = 0; i < this.data.Columns.Count; i += 1)
+            {
+                data.Add(pnData.Controls[i].Controls[1].Text.ToString());
+            }
+            return data;
         }
     }
 }

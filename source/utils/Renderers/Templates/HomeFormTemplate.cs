@@ -10,10 +10,8 @@ namespace SEPFramework.source.Utils.Renderers.Templates
 {
     public class HomeFormTemplate : FormTemplate
     {
-        private string connectionString;
-        public HomeFormTemplate(string connectionString, Template form, Template designer, List<TableMapper> data, string namespaceString) : base(form, designer, data, namespaceString)
+        public HomeFormTemplate(Template form, Template designer, List<TableMapper> data, string namespaceString) : base(form, designer, data, namespaceString)
         {
-            this.connectionString = connectionString;
         }
 
         public override string RenderForm()
@@ -21,8 +19,7 @@ namespace SEPFramework.source.Utils.Renderers.Templates
             return this.form.Render(new
             {
                 namespacestring = this.namespaceString,
-                entitynames = this.data.Select(table => table.name),
-                connectionstring = connectionString
+                entitynames = this.data.Select(table => table.name)
             });
         }
     }

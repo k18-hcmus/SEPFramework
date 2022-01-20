@@ -127,12 +127,15 @@
     <Compile Include="source\Views\Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
+    <Compile Include="source\Views\SignInComponents\FailureState.cs" />
+    <Compile Include="source\Views\SignInComponents\IdleState.cs" />
     <Compile Include="source\Views\SignIn.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="source\Views\SignIn.Designer.cs">
       <DependentUpon>SignIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="source\Views\SignInComponents\SignInState.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -167,7 +170,7 @@
     </Compile>
     <None Include="source\Controllers\.gitkeep" />
     <None Include="source\Poco\.gitkeep" />
-    <Content Include="source\Templates\Entity\DataRowConstructBody.txt" />
+    <Content Include="source\Templates\Entity\ConvertParam.txt" />
     <Content Include="source\Templates\SepORM\SQLServerDatabase.txt" />
     <Content Include="source\Templates\Utils\DataUtils.txt" />
     <Content Include="source\Templates\HomeForm\HomeForm.Designer.txt" />
