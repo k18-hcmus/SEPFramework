@@ -29,29 +29,43 @@
         private void InitializeComponent()
         {
             this.flpButtons = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // flpButtons
             // 
-            this.flpButtons.Location = new System.Drawing.Point(13, 13);
+            this.flpButtons.Location = new System.Drawing.Point(12, 117);
             this.flpButtons.Name = "flpButtons";
-            this.flpButtons.Size = new System.Drawing.Size(400, 300);
+            this.flpButtons.Size = new System.Drawing.Size(400, 200);
             this.flpButtons.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.label1.Location = new System.Drawing.Point(56, 47);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(306, 22);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Click Table Below To Perform CRUD";
             // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(429, 329);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.flpButtons);
             this.Name = "HomeForm";
             this.Text = "HomeForm";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel flpButtons;
+        private System.Windows.Forms.Label label1;
     }
 }

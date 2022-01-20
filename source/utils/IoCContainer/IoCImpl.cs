@@ -12,7 +12,6 @@ namespace SEPFramework.source.Utils.IoCContainer
     {
         Dictionary<Type, Type> registeredDict =
             new Dictionary<Type, Type>();
-
         Dictionary<Type, object> instances =
             new Dictionary<Type, object>();
 
@@ -104,7 +103,6 @@ namespace SEPFramework.source.Utils.IoCContainer
                 object resolvedType = ResolveType(paramInfo.ParameterType);
                 paramList.Add(resolvedType);
             }
-
             return constructor.Invoke(paramList.ToArray());
         }
 

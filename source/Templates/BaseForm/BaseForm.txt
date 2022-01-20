@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace {{ namespacestring }}
 {
@@ -15,13 +16,14 @@ namespace {{ namespacestring }}
     {
         public DataTable data = new DataTable();
         private HomeForm homeForm = null;
-        private string dataType = "";
+        private Type dataType;
+        public Type DataType { get => dataType; set => dataType = value; }
 {{ for name in entitynames}}
-        public BaseForm(HomeForm homeForm, string dataType, List<{{ name }}> data)
+        public BaseForm(HomeForm homeForm, Type dataType, List<{{ name }}> data)
         {
             InitializeComponent();
             this.homeForm = homeForm;
-            this.dataType = dataType;
+            this.DataType = dataType;
             this.data = DataUtils.ToDataTable<{{ name }}>(data);
             InitData();
         }{{end}}
@@ -52,19 +54,27 @@ namespace {{ namespacestring }}
                 return;
             DataGridViewRow selectedRow = dgvData.SelectedRows[0] as DataGridViewRow;
             string dataString = "";
+            List<string> dataList = new List<string>();
             foreach (DataGridViewCell cell in selectedRow.Cells)
+            {
                 dataString += cell.Value.ToString() + " ";
+                dataList.Add(cell.Value.ToString());
+            }
             DialogResult dialogResult = MessageBox.Show(dataString, "Are you sure to delete this row", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 data.Rows.Remove(data.Rows[selectedRow.Index]);
             }
-
+            SQLDatabase db = SQLDatabase.GetInstance();
+            ConstructorInfo constructor = DataType.GetConstructors().First(con => con.GetParameters().Length == 1);
+            MethodInfo genericDelete = db.GetType().GetMethod("Delete");
+            MethodInfo typeFunction = genericDelete.MakeGenericMethod(DataType);
+            typeFunction.Invoke(db, new object[] { constructor.Invoke(new object[] { dataList }) });
         }
 
         private void BaseForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            homeForm.RefeshData(dataType);
+            homeForm.RefeshData(DataType.Name);
         }
     }
 }

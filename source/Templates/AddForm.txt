@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace {{ namespacestring }}
 {
     public partial class AddForm : ActionForm
     {
+        private BaseForm baseForm;
         public AddForm(BaseForm baseForm, Modification modification, int index = -1): base(baseForm, modification, index)
         {
             InitializeComponent();
+            this.baseForm = baseForm;
             this.Size = new Size(550, 420);
         }
 
@@ -29,6 +32,10 @@ namespace {{ namespacestring }}
             }
             this.data.Rows.Add(data.ToArray());
             SQLDatabase db = SQLDatabase.GetInstance();
+            ConstructorInfo constructor = baseForm.DataType.GetConstructors().First(con => con.GetParameters().Length == 1);
+            MethodInfo genericInsert = db.GetType().GetMethod("Insert");
+            MethodInfo typeFunction = genericInsert.MakeGenericMethod(baseForm.DataType);
+            typeFunction.Invoke(db, new object[] { constructor.Invoke(new object[] { data }) });
         }
     }
 }
