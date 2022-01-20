@@ -8,7 +8,7 @@ using SEPFramework.source.SQLSep.Attribute;
 
 namespace SEPFramework.source.SQLSep.SepDataType
 {
-    public class SchemaByString : ISchemaByType
+    public class SchemaByString : SchemaByType
     {
         public string GenerateSchema(PropertyInfo prop)
         {

@@ -22,7 +22,7 @@ create table Khoa_Hoc
 create table Chuong_Trinh_Hoc
 (
 	Ma_CT varchar(10) primary key,
-	Ten_CT nvarchar(100)
+	Ten_CT nvarchar(100),
 )
 go
 

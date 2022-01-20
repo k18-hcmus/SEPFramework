@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SEPFramework.source.SQLSep.Attribute;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,12 +8,21 @@ using System.Threading.Tasks;
 namespace source.Poco
 {
     [Table("Members")]
+
     public class Members
     {
-    public string MemberId {get; set;}
-	public string Username {get; set;}
-	public string Password {get; set;}
-	public Boolean isLogged {get; set;}
+        [Key]
+        [Column("MemberId")]
+        public string MemberId { get; set; }
+
+        [Column("Username")]
+        public string Username { get; set; }
+
+        [Column("Password")]
+        public string Password { get; set; }
+
+        [Column("isLogged")]
+        public Boolean isLogged { get; set; }
 
     }
 }
