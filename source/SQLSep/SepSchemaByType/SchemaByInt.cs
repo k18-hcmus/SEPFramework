@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SEPFramework.source.SQLSep.SepDataType
 {
-    public class SchemaByInt : ISchemaByType
+    public class SchemaByInt : SchemaByType
     {
         public string GenerateSchema(PropertyInfo prop)
         {
