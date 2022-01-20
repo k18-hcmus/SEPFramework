@@ -50,7 +50,7 @@ namespace SEPFramework.source.views
                 //IoCContainer.RegisterType<DataProvider>(
                 //    new InjectionConstructor().AddParameter<string>(CONNECTION_STRING));
                 //List<TableMapper> tableMappers = IoCContainer.Resolve<DataProvider>().getTables();
-                DataProvider provider = DataProvider.GetInstance("localhost, 1433", "sa", "DesignPattern@2022");
+                DataProvider provider = DataProvider.GetInstance();
                 provider.Catalog = "StudentManagement";
                 List <TableMapper> tableMappers = provider.getTables();
                 string rootPath = "SampleSource";
