@@ -45,6 +45,26 @@ namespace SEPFramework.source.SQLSep.SepORM
             }
             return false;
         }
+        private bool IsTableExist (string TableName)
+        {
+            var sql = string.Format("SELECT * FROM INFORMATION_SCHEMA.TABLES Where Table_Schema = 'dbo'  AND Table_Name = '{0}'", TableName);
+            SqlDataReader reader = new SqlCommand(sql, connection).ExecuteReader();
+            if (reader.HasRows) // exists
+            {
+                reader.Close();
+                return true;
+            }
+            reader.Close();
+            return false;
+        }
+        public bool CreateTableNotExist(string TableName,string queryProps)
+        {
+            if (IsTableExist(TableName))
+                return false;
+            var sql = string.Format("create table {0}({1})",TableName, queryProps);
+            int tableCreated = new SqlCommand(sql, connection).ExecuteNonQuery();
+            return tableCreated == 1;
+        }
         public List<T> GetList<T>(string whereConditions = "") where T : class, new()
         {
             // Build Query

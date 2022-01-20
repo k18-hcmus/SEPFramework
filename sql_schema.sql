@@ -98,7 +98,7 @@ create table Members
 (
 	MemberId varchar(10) primary key,
 	Username varchar(30) not null,
-	Password varchar(64) not null,
+	Password CHAR(128) not null,
 	isLogged BIT,
 )
 go

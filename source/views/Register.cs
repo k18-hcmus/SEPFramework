@@ -13,12 +13,10 @@ namespace SEPFramework.source.views
 {
     public partial class Register : Form
     {
-        public Membership member;
         private SignIn signIn;
         public Register(SignIn signIn)
         {
             InitializeComponent();
-            member = new Membership();
             this.signIn = signIn;
         }
         private void setNotifyClear()
@@ -79,7 +77,7 @@ namespace SEPFramework.source.views
                 return;
             }
 
-            if (this.member.Register(username, password))
+            if (this.signIn.member.Register(username, password))
             {
                 showSuccessNotify("Register success, press Sign In to go back");
                 return;
