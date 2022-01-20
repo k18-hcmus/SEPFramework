@@ -20,20 +20,18 @@ namespace SEPFramework.source.views
 {
     public partial class Home : Form
     {
-        public Membership member;
         private string username;
         private SignIn signIn;
         public Home(SignIn signIn)
         {
             InitializeComponent();
             this.signIn = signIn;
-            member = new Membership();
             this.username = signIn.getUsername();
         }
 
         private void logout_btn_Click(object sender, EventArgs e)
         {
-            if (this.member.Logout(this.username))
+            if (this.signIn.member.Logout(this.username))
             {
                 this.signIn.Show();
                 this.Close();

@@ -18,6 +18,7 @@ namespace SEPFramework.source.Controllers
         {
             string connectiongString = DataProvider.GetInstance().GetConnectionString();
             hdl_model = SQLDatabase.GetInstance(connectiongString);
+            hdl_model.CreateTableNotExist("Members", "Username varchar(30) not null, Password CHAR(128) not null,isLogged BIT,MemberId varchar(10) primary key");
         }
         public bool Login(string username, string password)
         {
