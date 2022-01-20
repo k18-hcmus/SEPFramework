@@ -76,7 +76,7 @@ namespace SEPFramework.source.SQLSep.SepORM
             List<string> SqlPrimaryKey = new List<string>();
             List<string> SqlSchemaFields = new List<string>();
 
-            string tableSchema = tableSchemaFactory.GenerateTableSchema(props);
+            var tableSchema = GenerateTableSchema(props);
     
             var sql = string.Format("create table {0}({1})", classType.Name, tableSchema);
             
@@ -84,7 +84,19 @@ namespace SEPFramework.source.SQLSep.SepORM
             return tableCreated == 1;
         }
 
- 
+        private object GenerateTableSchema(PropertyInfo[] props)
+        {
+            List<string> schemaLines = new List<string>();
+            List<string> keys = new List<string>();
+            foreach (PropertyInfo prop in typeClass.GetProperties())
+            {
+                lstFieldQuery.Add(dataFactory.GenerateCreatePropertyQuery(prop));
+                if (Key.check(prop))
+                {
+                    lstKey.Add(prop.Name);
+                }
+            }
+        }
 
         public List<T> GetList<T>(string whereConditions = "") where T : class, new()
         {
