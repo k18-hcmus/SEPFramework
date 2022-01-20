@@ -127,6 +127,9 @@
     <Compile Include="source\Views\Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
+    <Compile Include="source\Views\RegisterComponents\FailureState.cs" />
+    <Compile Include="source\Views\RegisterComponents\IdleState.cs" />
+    <Compile Include="source\Views\RegisterComponents\RegisterState.cs" />
     <Compile Include="source\Views\SignInComponents\FailureState.cs" />
     <Compile Include="source\Views\SignInComponents\IdleState.cs" />
     <Compile Include="source\Views\SignIn.cs">
