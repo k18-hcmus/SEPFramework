@@ -1,4 +1,5 @@
 ﻿using Scriban;
+using SEPFramework.source.Utils.IoCContainer;
 using SEPFramework.source.Utils.membership;
 using SEPFramework.source.Views;
 using System;
@@ -22,8 +23,8 @@ namespace SEPFramework.source.views
         public SignIn()
         {
             InitializeComponent();
-            member = new Membership();
-            SignInState = new IdleState(this);
+            member = IoC.Resolve<Membership>();
+            SignInState = IoC.Resolve<IdleState>(new InjectionConstructor().AddParameter<SignIn>(this));
         }
 
         public void SetNotifyClear()

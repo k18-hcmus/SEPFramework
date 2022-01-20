@@ -1,4 +1,5 @@
-﻿using SEPFramework.source.views;
+﻿using SEPFramework.source.Utils.IoCContainer;
+using SEPFramework.source.views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,14 +20,14 @@ namespace SEPFramework.source.Views.RegisterComponents
         {
             if (!registerForm.Validate())
             {
-                registerForm.RegisterState = new FailureState(registerForm);
+                registerForm.RegisterState = IoC.Resolve<FailureState>(new InjectionConstructor().AddParameter<Register>(registerForm));
                 registerForm.NotifyValidationFailed();
                 return;
             }
 
             if (!registerForm.Verify())
             {
-                registerForm.RegisterState = new FailureState(registerForm);
+                registerForm.RegisterState = IoC.Resolve<FailureState>(new InjectionConstructor().AddParameter<Register>(registerForm));
                 registerForm.NotifyVerificationFailed();
                 return;
             }

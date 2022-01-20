@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SEPFramework.source.Utils.IoCContainer;
 using SEPFramework.source.Utils.membership;
 using SEPFramework.source.Views.RegisterComponents;
 
@@ -21,7 +22,7 @@ namespace SEPFramework.source.views
         {
             InitializeComponent();
             this.signIn = signIn;
-            RegisterState = new IdleState(this);
+            RegisterState = IoC.Resolve<IdleState>(new InjectionConstructor().AddParameter<Register>(this));
         }
         public void setNotifyClear()
         {

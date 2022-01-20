@@ -1,4 +1,5 @@
-﻿using SEPFramework.source.views;
+﻿using SEPFramework.source.Utils.IoCContainer;
+using SEPFramework.source.views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,7 @@ namespace SEPFramework.source.Views
                 return;
             }
 
-            signInForm.SignInState = new IdleState(signInForm);
+            signInForm.SignInState = IoC.Resolve<IdleState>(new InjectionConstructor().AddParameter<SignIn>(signInForm));
             signInForm.OnVerificationSuccess();
         }
     }

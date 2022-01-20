@@ -62,7 +62,7 @@ namespace SEPFramework.source.views
                 DirectoryInfo d = Directory.CreateDirectory(rootPath);
                 string namespaceString = "SEPFramework.SampleSource";
 
-                ITemplateFactory formfactory = new FormFactory();
+                ITemplateFactory formfactory = IoC.Resolve<FormFactory>();
 
                 ITemplate homeFormTemplate = formfactory.GetTemplate(
                     new FormParameter(FormParameter.Type.HomeForm,
@@ -87,7 +87,7 @@ namespace SEPFramework.source.views
                 editFormTemplate.Render(formPath, "EditForm");
 
                 DirectoryInfo de = Directory.CreateDirectory(entityPath);
-                ITemplateFactory entityFactory = new EntityFactory();
+                ITemplateFactory entityFactory = IoC.Resolve<EntityFactory>();
                 foreach (TableMapper table in tableMappers)
                 {
                     ITemplate entityTemplate = entityFactory.GetTemplate(
@@ -96,13 +96,13 @@ namespace SEPFramework.source.views
                 }
 
                 DirectoryInfo di = Directory.CreateDirectory(utilPath);
-                ITemplateFactory utilFactory = new UtilFactory();
+                ITemplateFactory utilFactory = IoC.Resolve<UtilFactory>();
                 ITemplate utilTemplate = utilFactory.GetTemplate(
                     new BaseParameter(namespaceString));
                 utilTemplate.Render(utilPath, "DataUtils");
 
                 DirectoryInfo ds = Directory.CreateDirectory(sqlPath);
-                ITemplateFactory sqlFactory = new SQLFactory();
+                ITemplateFactory sqlFactory = IoC.Resolve<SQLFactory>();
                 ITemplate sqlTemplate = sqlFactory.GetTemplate(
                     new SQLParameter(SQLParameter.Type.SQLServer, namespaceString));
                 sqlTemplate.Render(sqlPath, "SQLDatabase");

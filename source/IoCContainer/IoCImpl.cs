@@ -8,25 +8,27 @@ using System.Windows.Forms;
 
 namespace SEPFramework.source.Utils.IoCContainer
 {
-    public class IoCImpl : IIoC
+    public static class IoC
     {
-        Dictionary<Type, Type> registeredDict =
+        private static Dictionary<Type, Type> registeredDict =
             new Dictionary<Type, Type>();
-        Dictionary<Type, object> instances =
+        private static Dictionary<Type, object> instances =
             new Dictionary<Type, object>();
 
-        public bool IsRegistered<Type>()
+        public static bool IsRegistered<Type>()
         {
             return registeredDict.Any(a => a.Key == typeof(Type));
         }
 
-        public T Resolve<T>() where T : class
+        public static T Resolve<T>(InjectionConstructor constructor = null) where T : class
         {
             try
             {
-                T obj = (T)ResolveType(typeof(T));
+                T obj = (T)ResolveType(typeof(T), constructor);
                 if (!instances.ContainsKey(typeof(T)))
                     instances.Add(typeof(T), obj);
+                if (!registeredDict.ContainsKey(typeof(T)))
+                    registeredDict.Add(typeof(T), typeof(T));
                 return obj;
             }
             catch(Exception exp)
@@ -36,23 +38,7 @@ namespace SEPFramework.source.Utils.IoCContainer
             return null;
         }
 
-        public void RegisterType<T>(InjectionConstructor constructor = null) where T : class
-        {
-            try
-            {
-                T obj = (T)ResolveType(typeof(T), constructor);
-                if (!instances.ContainsKey(typeof(T)))
-                    instances.Add(typeof(T), obj);
-                if (!registeredDict.ContainsKey(typeof(T)))
-                    registeredDict.Add(typeof(T), typeof(T));
-            }
-            catch (Exception exp)
-            {
-                MessageBox.Show("Register entity failed err=" + exp.Message);
-            }
-        }
-
-        public void RegisterType<TFrom, TTo>() where TTo : TFrom
+        public static void RegisterType<TFrom, TTo>() where TTo : TFrom
         {
             try
             {
@@ -69,7 +55,7 @@ namespace SEPFramework.source.Utils.IoCContainer
             }
         }
 
-        private object ResolveType(Type type, InjectionConstructor constructParam = null)
+        private static object ResolveType(Type type, InjectionConstructor constructParam = null)
         {
             try
             {
@@ -88,7 +74,7 @@ namespace SEPFramework.source.Utils.IoCContainer
             }
         }
 
-        private object CreateDefaultObject(Type type)
+        private static object CreateDefaultObject(Type type)
         {
             ConstructorInfo constructor = type.GetConstructors().First();
             List<ParameterInfo> constructorParams = constructor.GetParameters().Where(w => w.GetType().IsClass).ToList();
@@ -106,7 +92,7 @@ namespace SEPFramework.source.Utils.IoCContainer
             return constructor.Invoke(paramList.ToArray());
         }
 
-        private object CreateObjectWithParameter(Type type, List<object> parameters)
+        private static object CreateObjectWithParameter(Type type, List<object> parameters)
         {
             ConstructorInfo constructor = type.GetConstructors().First();
             List<ParameterInfo> constructorParams = constructor.GetParameters().Where(w => w.GetType().IsClass).ToList();

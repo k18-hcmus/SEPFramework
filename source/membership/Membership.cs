@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SEPFramework.source.Controllers;
+using SEPFramework.source.Utils.IoCContainer;
 
 namespace SEPFramework.source.Utils.membership
 {
@@ -12,7 +13,7 @@ namespace SEPFramework.source.Utils.membership
         private static handleController controller;
         public Membership()
         {
-            controller = new handleController();
+            controller = IoC.Resolve<handleController>();
         }
         public bool Login(string username, string password)
         {

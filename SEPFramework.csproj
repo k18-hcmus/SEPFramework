@@ -101,27 +101,26 @@
     <Compile Include="source\SQLSep\SepORM\TableSchema.cs" />
     <Compile Include="source\Utils\DataUtils.cs" />
     <Compile Include="source\Utils\FileUtils.cs" />
-    <Compile Include="source\Utils\IoCContainer\IIoC.cs" />
-    <Compile Include="source\Utils\IoCContainer\InjectionConstructor.cs" />
-    <Compile Include="source\Utils\IoCContainer\IoCImpl.cs" />
-    <Compile Include="source\Utils\membership\Crypto.cs" />
-    <Compile Include="source\Utils\membership\Membership.cs" />
-    <Compile Include="source\Utils\renderers\BaseParameter.cs" />
-    <Compile Include="source\Utils\renderers\Factories\EntityFactory.cs" />
-    <Compile Include="source\Utils\renderers\Factories\FormFactory.cs" />
-    <Compile Include="source\Utils\renderers\Factories\SQLFactory.cs" />
-    <Compile Include="source\Utils\renderers\Factories\UtilFactory.cs" />
-    <Compile Include="source\Utils\renderers\ITemplate.cs" />
-    <Compile Include="source\Utils\renderers\ITemplateFactory.cs" />
-    <Compile Include="source\Utils\renderers\Parameters\EntityParameter.cs" />
-    <Compile Include="source\Utils\renderers\Parameters\FormParameter.cs" />
-    <Compile Include="source\Utils\renderers\Parameters\SQLParameter.cs" />
-    <Compile Include="source\Utils\renderers\Templates\BaseFormTemplate.cs" />
-    <Compile Include="source\Utils\renderers\Templates\EntityTemplate.cs" />
-    <Compile Include="source\Utils\renderers\Templates\FormTemplate.cs" />
-    <Compile Include="source\Utils\renderers\Templates\HomeFormTemplate.cs" />
-    <Compile Include="source\Utils\renderers\Templates\SQLTemplate.cs" />
-    <Compile Include="source\Utils\renderers\Templates\UtilTemplate.cs" />
+    <Compile Include="source\IoCContainer\InjectionConstructor.cs" />
+    <Compile Include="source\IoCContainer\IoCImpl.cs" />
+    <Compile Include="source\membership\Crypto.cs" />
+    <Compile Include="source\membership\Membership.cs" />
+    <Compile Include="source\renderers\BaseParameter.cs" />
+    <Compile Include="source\renderers\Factories\EntityFactory.cs" />
+    <Compile Include="source\renderers\Factories\FormFactory.cs" />
+    <Compile Include="source\renderers\Factories\SQLFactory.cs" />
+    <Compile Include="source\renderers\Factories\UtilFactory.cs" />
+    <Compile Include="source\renderers\ITemplate.cs" />
+    <Compile Include="source\renderers\ITemplateFactory.cs" />
+    <Compile Include="source\renderers\Parameters\EntityParameter.cs" />
+    <Compile Include="source\renderers\Parameters\FormParameter.cs" />
+    <Compile Include="source\renderers\Parameters\SQLParameter.cs" />
+    <Compile Include="source\renderers\Templates\BaseFormTemplate.cs" />
+    <Compile Include="source\renderers\Templates\EntityTemplate.cs" />
+    <Compile Include="source\renderers\Templates\FormTemplate.cs" />
+    <Compile Include="source\renderers\Templates\HomeFormTemplate.cs" />
+    <Compile Include="source\renderers\Templates\SQLTemplate.cs" />
+    <Compile Include="source\renderers\Templates\UtilTemplate.cs" />
     <Compile Include="source\Views\Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +139,9 @@
     <Compile Include="source\Views\Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
+    <Compile Include="source\Views\RegisterComponents\FailureState.cs" />
+    <Compile Include="source\Views\RegisterComponents\IdleState.cs" />
+    <Compile Include="source\Views\RegisterComponents\RegisterState.cs" />
     <Compile Include="source\Views\SignInComponents\FailureState.cs" />
     <Compile Include="source\Views\SignInComponents\IdleState.cs" />
     <Compile Include="source\Views\SignIn.cs">
@@ -184,6 +186,12 @@
     <None Include="source\Controllers\.gitkeep" />
     <None Include="source\Poco\.gitkeep" />
     <Content Include="source\Templates\Entity\ConvertParam.txt" />
+    <Content Include="source\Templates\SepORM\Attribute\Column.txt" />
+    <Content Include="source\Templates\SepORM\Attribute\EntityAttribute.txt" />
+    <Content Include="source\Templates\SepORM\Attribute\Key.txt" />
+    <Content Include="source\Templates\SepORM\Attribute\Required.txt" />
+    <Content Include="source\Templates\SepORM\Attribute\StringLength.txt" />
+    <Content Include="source\Templates\SepORM\Attribute\Table.txt" />
     <Content Include="source\Templates\SepORM\SQLServerDatabase.txt" />
     <Content Include="source\Templates\Utils\DataUtils.txt" />
     <Content Include="source\Templates\HomeForm\HomeForm.Designer.txt" />
