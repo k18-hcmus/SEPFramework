@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SEPFramework.source.SQLSep.Attribute;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -65,6 +66,26 @@ namespace SEPFramework.source.SQLSep.SepORM
             int tableCreated = new SqlCommand(sql, connection).ExecuteNonQuery();
             return tableCreated == 1;
         }
+
+        public bool CreateTableNotExist(Type classType)
+        {
+            if (IsTableExist(classType.Name))
+                return false;
+            TableSchemaFactory tableSchemaFactory = new TableSchemaFactory();
+            var props = classType.GetProperties();
+            List<string> SqlPrimaryKey = new List<string>();
+            List<string> SqlSchemaFields = new List<string>();
+
+            string tableSchema = tableSchemaFactory.GenerateTableSchema(props);
+    
+            var sql = string.Format("create table {0}({1})", classType.Name, tableSchema);
+            
+            int tableCreated = new SqlCommand(sql, connection).ExecuteNonQuery();
+            return tableCreated == 1;
+        }
+
+ 
+
         public List<T> GetList<T>(string whereConditions = "") where T : class, new()
         {
             // Build Query

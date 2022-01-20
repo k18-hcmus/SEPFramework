@@ -82,9 +82,14 @@
     <Compile Include="source\SQLSep\Attribute\EntityAttribute.cs" />
     <Compile Include="source\SQLSep\Attribute\Key.cs" />
     <Compile Include="source\SQLSep\Attribute\Required.cs" />
+    <Compile Include="source\SQLSep\Attribute\StringLength.cs" />
     <Compile Include="source\SQLSep\Attribute\Table.cs" />
-    <Compile Include="source\SQLSep\SepDataType\DataType.cs" />
-    <Compile Include="source\SQLSep\SepDataType\SQLType.cs" />
+    <Compile Include="source\SQLSep\SepDataType\ISchemaByType.cs" />
+    <Compile Include="source\SQLSep\SepDataType\SchemaByBool.cs" />
+    <Compile Include="source\SQLSep\SepDataType\SchemaByDateTime.cs" />
+    <Compile Include="source\SQLSep\SepDataType\SchemaByDouble.cs" />
+    <Compile Include="source\SQLSep\SepDataType\SchemaByInt.cs" />
+    <Compile Include="source\SQLSep\SepDataType\SchemaByType.cs" />
     <Compile Include="source\SQLSep\SepORM\SQLDatabase.cs" />
     <Compile Include="source\SQLSep\SepORM\DataProvider.cs" />
     <Compile Include="source\SQLSep\SepORM\IDatabase.cs" />
@@ -93,6 +98,7 @@
     <Compile Include="source\SQLSep\Entities\TableMapper.cs" />
     <Compile Include="source\SQLSep\Entities\ForeignKey.cs" />
     <Compile Include="source\SQLSep\Entities\PrimaryKey.cs" />
+    <Compile Include="source\SQLSep\SepORM\TableSchemaFactory.cs" />
     <Compile Include="source\Utils\DataUtils.cs" />
     <Compile Include="source\Utils\FileUtils.cs" />
     <Compile Include="source\Utils\IoCContainer\IIoC.cs" />

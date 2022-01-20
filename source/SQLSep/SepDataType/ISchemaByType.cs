@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace SEPFramework.source.SQLSep.SepDataType
 {
-    public interface DataType
+    public interface ISchemaByType
     {
-        string GenCreateQuery(PropertyInfo prop);
-        string GenSQLValue(object value);
+        string GenerateSchema(PropertyInfo prop);
     }
 }
