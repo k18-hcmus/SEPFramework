@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace source.Poco
 {
+    [Table("Members")]
     public class Members
     {
-    	public string MemberId {get; set;}
+    public string MemberId {get; set;}
 	public string Username {get; set;}
 	public string Password {get; set;}
 	public Boolean isLogged {get; set;}
